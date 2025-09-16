@@ -39,8 +39,8 @@ export default function Hero() {
         {/* top badge */}
         <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-primary/40 bg-white/5 px-3 py-1 text-xs text-primary backdrop-blur">
           <span className="inline-block h-2 w-2 rounded-full bg-primary" />
-          <span className="text-foreground/70">New feature</span>
-          <span className="text-foreground/60">Check out the team dashboard</span>
+          <span className="text-foreground/70">InternX Cohort-1</span>
+          <span className="text-foreground/60">Check out the plan!</span>
           <Link
             href="#features"
             className="ml-2 inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-foreground/80 hover:bg-primary/20"
@@ -83,7 +83,7 @@ export default function Hero() {
         </div>
         <div
           className="
-            mx-auto mt-4 grid max-w-4xl grid-cols-2 items-center gap-x-2 gap-y-6
+            sm:hidden mx-auto mt-4 grid max-w-4xl grid-cols-2 items-center gap-x-2 gap-y-6
             opacity-75 lg:grid-cols-5
           "
         >
