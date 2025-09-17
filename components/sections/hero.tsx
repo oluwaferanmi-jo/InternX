@@ -37,22 +37,30 @@ export default function Hero() {
       {/* Content */}
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-20 sm:pt-28 sm:pb-28">
         {/* top badge */}
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-primary/40 bg-white/5 px-3 py-1 text-xs text-primary backdrop-blur">
-          <span className="inline-block h-2 w-2 rounded-full bg-primary" />
-          <span className="text-foreground/70">InternX Cohort-1</span>
-          <span className="text-foreground/60">Check out the plan!</span>
+        <div className="flex justify-center">
+     <div className="mx-auto mb-6 inline-flex max-w-[92vw] items-center gap-2
+        rounded-full border border-primary/40 bg-white/5 px-3 py-1
+        text-xs sm:text-sm text-foreground/80 backdrop-blur">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />
+          <span className="shrink-0 whitespace-nowrap text-foreground/70">InternX Cohort-1</span>
+          <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
+          <span className="min-w-0 flex-1 truncate text-foreground/70">Check out the plan!</span>
+           <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
           <Link
             href="#features"
-            className="ml-2 inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-foreground/80 hover:bg-primary/20"
-          >
-            → Explore
+ className="shrink-0 whitespace-nowrap rounded-full bg-[#FF5029] px-3 py-1
+               text-foreground/90 hover:bg-primary/20"          >
+            Explore
           </Link>
         </div>
-
+        </div>
         <h1 className="mx-auto max-w-4xl text-center text-4xl font-bold tracking-tight sm:text-6xl">
-          High-performing remote teams.
+          High-
+          <span className="text-[#FF5029]">
+          performing </span> remote teams.
           <br />
-          <span className="text-primary">The future of work.</span>
+          <span className="text-primary">The future of <span className="text-[#FF5029]">
+          work </span> </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-foreground/70 sm:text-lg">
@@ -81,30 +89,64 @@ export default function Hero() {
         <div className="mt-10 text-center text-sm text-foreground/50">
           Trusted by 4,000+ companies
         </div>
-        <div
-          className="
-            sm:hidden mx-auto mt-4 grid max-w-4xl grid-cols-2 items-center gap-x-2 gap-y-6
-            opacity-75 lg:grid-cols-5
-          "
-        >
-          <Logo name="Software Engineering" />
-          <Logo name="Product Design" />
-          <Logo name="Data Analytics" />
-          <Logo name="CyberSecurity" />
-          <Logo name="Quality Assurance" />
-        </div>
-      </div>
+        {/* Mobile: one single scrolling row */}
+<div className="sm:hidden mt-6">
+  <div className="relative overflow-hidden marquee-mask">
+    <div
+      className="
+        marquee-anim flex w-[200%] animate-[marquee-x_18s_linear_infinite]
+      "
+    >
+      {/* copy 1 */}
+      <MarqueeContent />
+
+      {/* copy 2 (duplicate for seamless loop) */}
+      <MarqueeContent aria-hidden />
+    </div>
+  </div>
+</div>
+
+{/* Tablet/Desktop: normal grid */}
+<div
+  className="
+    hidden sm:grid mx-auto mt-4 max-w-4xl grid-cols-2 items-center gap-x-2 gap-y-6
+    opacity-75 lg:grid-cols-5
+  "
+>
+  <Track name="Software Engineering" />
+  <Track name="Product Design" />
+  <Track name="Data Analytics" />
+  <Track name="CyberSecurity" />
+  <Track name="Quality Assurance" />
+</div>
+</div>
     </section>
   );
 }
 
-/** Placeholder logo pill – swap with real SVGs or next/image later */
-function Logo({ name }: { name: string }) {
+function MarqueeContent(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className="flex items-center justify-center">
-      <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs text-foreground/70">
-        {name}
-      </div>
+    <div
+      className="
+        flex min-w-[50%] shrink-0 items-center gap-3 px-2
+        whitespace-nowrap
+      "
+      {...props}
+    >
+      <Track name="Software Engineering" />
+      <Track name="Product Design" />
+      <Track name="Data Analytics" />
+      <Track name="CyberSecurity" />
+      <Track name="Quality Assurance" />
     </div>
   );
 }
+
+function Track({ name }: { name: string }) {
+  return (
+    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs text-foreground/70">
+      {name}
+    </div>
+  );
+}
+

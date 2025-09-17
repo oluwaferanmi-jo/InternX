@@ -120,3 +120,18 @@
     @apply bg-background text-foreground;
   }
 }
+@keyframes marquee-x {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* duplicate content -> seamless loop */
+}
+
+/* soft edge fade */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-anim { animation: none !important; transform: none !important; }
+}
