@@ -48,7 +48,7 @@ export default function Hero() {
            <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
           <Link
             href="#features"
- className="shrink-0 whitespace-nowrap rounded-full bg-[#FF5029] px-3 py-1
+ className="shrink-0 whitespace-nowrap rounded-full bg-[#ff5029] px-3 py-1
                text-foreground/90 hover:bg-primary/20"          >
             Explore
           </Link>
@@ -56,11 +56,15 @@ export default function Hero() {
         </div>
         <h1 className="mx-auto max-w-4xl text-center text-4xl font-bold tracking-tight sm:text-6xl">
           High-
-          <span className="text-[#FF5029]">
-          performing </span> remote teams.
+         <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+         performing
+          
+          </span> remote teams.
           <br />
-          <span className="text-primary">The future of <span className="text-[#FF5029]">
-          work </span> </span>
+          <span className="text-primary">The future of <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+          work.
+          
+          </span> </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-foreground/70 sm:text-lg">
@@ -79,7 +83,7 @@ export default function Hero() {
 
           <Link
             href="#demo"
-            className="rounded-full border border-white/20 px-6 py-4 text-base text-foreground/80 hover:bg-white/5"
+            className="rounded-full border border-white/20 px-6 py-2 text-base text-foreground/80 hover:bg-white/5"
           >
             Review your CV
           </Link>
@@ -109,7 +113,7 @@ export default function Hero() {
 {/* Tablet/Desktop: normal grid */}
 <div
   className="
-    hidden sm:grid mx-auto mt-4 max-w-4xl grid-cols-2 items-center gap-x-2 gap-y-6
+    hidden sm:grid mx-auto mt-4 max-w-4xl grid-cols-2  justify-items-center gap-x-2 gap-y-6
     opacity-75 lg:grid-cols-5
   "
 >
