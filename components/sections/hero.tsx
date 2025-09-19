@@ -11,7 +11,7 @@ export default function Hero() {
       className="
         relative overflow-hidden
         bg-gradient-to-b from-slate-900 via-slate-950 to-black
-        text-foreground
+        text-foreground bb-5
       "
     >
       {/* Decorative: faint grid + stars */}
@@ -29,7 +29,7 @@ export default function Hero() {
       {/* Decorative: cyan arc on the right */}
       <div
         aria-hidden
-        className="absolute -right-32 bottom-0 h-[700px] w-[700px] rounded-full blur-3xl opacity-25"
+        className="absolute -right-32 bottom-0 h-[700px] w-[700px] rounded-full blur-3xl opacity-20"
         style={{
           background:
             "conic-gradient(from 200deg at 50% 50%, rgba(6,182,212,.65), rgba(139,92,246,.25), transparent 70%)",
@@ -37,7 +37,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-20 lg:pb-28 sm:pt-28 sm:pb-28">
+      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-10 lg:pb-28 sm:pt-28 sm:pb-28">
         {/* top badge */}
         <div className="flex justify-center">
      <div className="mx-auto mb-6 inline-flex max-w-[92vw] items-center gap-2
