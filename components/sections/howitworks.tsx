@@ -72,7 +72,7 @@ export default function HowItWorks() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-10 lg:py-10 sm:py-28">
+      <div className="relative mx-auto max-w-7xl px-6 py-0 lg:py-0 ">
       
         {/* Header */}
         <header className="mb-10 sm:mb-14 text-center">

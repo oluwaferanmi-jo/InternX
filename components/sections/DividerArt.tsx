@@ -5,11 +5,11 @@ import Image from "next/image";
 export default function DividerArt() {
   // Aspect ratio from your Figma frame: 1384 × 776
   return (
-    <div className="relative z-10 -mt-20 lg:-mt-20 lg:mb-0 mb-0 bg-black">
+    <div className="relative z-10 -mt-5 lg:-mt-20 lg:mb-5 mb-5">
       {/* responsive width; always centered */}
       <div
         className="mx-auto w-[min(92vw,1100px)]"
-        style={{ aspectRatio: "1384 / 776" }}
+        style={{ aspectRatio: "1200 / 600" }}
       >
         <Image
           src="/Abstract.svg" // <- your exported asset
@@ -25,7 +25,7 @@ export default function DividerArt() {
       </div>
 
       {/* optional soft edge fade so it blends into the bg */}
-      <div className="pointer-events-none absolute inset-x-0 -bottom-6 h-10
+      <div className="pointer-events-none absolute inset-x-0 -bottom-6 h-0
                       [mask-image:linear-gradient(to bottom,black,transparent)] bg-black/30" />
     </div>
   );

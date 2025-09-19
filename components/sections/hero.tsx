@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import DividerArt from "@/components/sections/DividerArt";
 
 export default function Hero() {
   return (
@@ -90,7 +91,7 @@ export default function Hero() {
           </Link>
         </div>
 <div className="mt-10 text-center text-sm text-foreground/50"> Trusted by 4,000+ learners & 10+ Partners </div>
-
+      <DividerArt/>
           
         {/* Mobile: one single scrolling row */}
 <div className="sm:hidden mt-6">
