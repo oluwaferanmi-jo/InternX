@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function DividerArt() {
   // Aspect ratio from your Figma frame: 1384 × 776
   return (
-    <div className="relative z-10 mt-10 lg:mt-10 lg:mb-5 mb-5">
+    <div className="relative z-10 mt-5 lg:mt-10 lg:mb-5 mb-5">
       {/* responsive width; always centered */}
       <div
         className="mx-auto w-[min(92vw,1100px)]"
