@@ -12,7 +12,7 @@ export default function DividerArt() {
         style={{ aspectRatio: "1200 / 600" }}
       >
         <Image
-          src="/rest.svg" // <- your exported asset
+          src="/agent.svg" // <- your exported asset
           alt="Astract"
           fill
           priority
