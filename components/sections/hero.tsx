@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -90,9 +91,15 @@ export default function Hero() {
         </div>
 
         {/* trust logos */}
-        <div className="mt-10 text-center text-sm text-foreground/50">
-          Trusted by 4,000+ companies
+       {/* trust bar */}
+        <div className="mt-10 flex flex-col items-center gap-3 text-sm text-foreground/50">
+          <span>Trusted by 4,000+ learners & 10+ Partners</span>
+          <div className="flex items-center gap-4 opacity-90">
+            <Image src="/Avatar.svg" alt="Partner" width={80} height={80} />
+          </div>
         </div>
+
+          
         {/* Mobile: one single scrolling row */}
 <div className="sm:hidden mt-6">
   <div className="relative overflow-hidden marquee-mask">
