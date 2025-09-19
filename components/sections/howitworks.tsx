@@ -77,7 +77,8 @@ export default function HowItWorks() {
         {/* Header */}
         <header className="mb-10 sm:mb-14 text-center">
           <h2 className="text-3xl font-bold sm:text-4xl">
-            How <span className="text-primary">InternX</span> Works
+           Want to Learn how <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+          InternX</span> Works?
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-foreground/70">
             A simple, proven path: apply, learn with mentors, and launch with a
