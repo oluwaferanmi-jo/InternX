@@ -89,17 +89,13 @@ export default function Hero() {
             Review your CV
           </Link>
         </div>
+<div className="mt-10 flex flex-col items-center gap-3 text-sm text-foreground/50">
+  <span>Trusted by 4,000+ learners & 10+ Partners</span>
+  <div className="flex items-center gap-4 opacity-90">
+    <Image src="/Avatar.svg" alt="Partner" width={180} height={80} />
 
-        {/* trust logos */}
-       {/* trust bar */}
-        <div className="mt-10 flex flex-col items-center gap-3 text-sm text-foreground/50">
-          <span>Trusted by 4,000+ learners & 10+ Partners</span>
-          <div className="flex items-center gap-4 opacity-100">
-            <Image src="/Avatar.svg" alt="Partner" width={80} height={80}
-            className="sm:w-20 sm:h-20 shrink-0 object-contain"
-           />
-          </div>
-        </div>
+  </div>
+</div>
 
           
         {/* Mobile: one single scrolling row */}
