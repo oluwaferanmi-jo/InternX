@@ -36,7 +36,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-20 sm:pt-28 sm:pb-28">
+      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-20 lg:pb-28 sm:pt-28 sm:pb-28">
         {/* top badge */}
         <div className="flex justify-center">
      <div className="mx-auto mb-6 inline-flex max-w-[92vw] items-center gap-2
@@ -89,13 +89,7 @@ export default function Hero() {
             Review your CV
           </Link>
         </div>
-<div className="mt-10 flex flex-col items-center gap-3 text-sm text-foreground/50">
-  <span>Trusted by 4,000+ learners & 10+ Partners</span>
-  <div className="flex items-center gap-4 opacity-90">
-    <Image src="/Avatar.svg" alt="Partner" width={180} height={80} />
-
-  </div>
-</div>
+<div className="mt-10 text-center text-sm text-foreground/50"> Trusted by 4,000+ learners & 10+ Partners </div>
 
           
         {/* Mobile: one single scrolling row */}
