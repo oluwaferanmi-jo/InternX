@@ -29,7 +29,7 @@ export default function Hero() {
       {/* Decorative: cyan arc on the right */}
       <div
         aria-hidden
-        className="absolute -right-32 bottom-0 h-[700px] w-[700px] rounded-full blur-3xl opacity-40"
+        className="absolute -right-32 bottom-0 h-[700px] w-[700px] rounded-full blur-3xl opacity-25"
         style={{
           background:
             "conic-gradient(from 200deg at 50% 50%, rgba(6,182,212,.65), rgba(139,92,246,.25), transparent 70%)",
@@ -148,7 +148,7 @@ function MarqueeContent(props: React.HTMLAttributes<HTMLDivElement>) {
 
 function Track({ name }: { name: string }) {
   return (
-    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs text-foreground/70">
+    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs text-foreground/white">
       {name}
     </div>
   );
