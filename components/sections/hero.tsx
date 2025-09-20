@@ -67,7 +67,7 @@ export default function Hero() {
             Review your CV
           </Link>
         </div>
-<div className="mt-10 text-center text-sm text-foreground/50"> Trusted by 4,000+ learners & 10+ Partners </div>
+
       
           
         {/* Mobile: one single scrolling row */}
@@ -101,6 +101,7 @@ export default function Hero() {
   <Track name="Quality Assurance" />
 </div>
 </div>
+<div className="mt-3 text-center text-sm text-foreground/50"> Trusted by 4,000+ learners & 10+ Partners </div>
     </section>
   );
 }
