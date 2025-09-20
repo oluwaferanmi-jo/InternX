@@ -8,34 +8,10 @@ import DividerArt from "@/components/sections/DividerArt";
 export default function Hero() {
   return (
     <section
-      className="
-        relative overflow-hidden
-        bg-gradient-to-b from-slate-900 via-slate-950 to-black
-        text-foreground bb-5
-      "
+     className="relative text-foreground"
+
     >
-      {/* Decorative: faint grid + stars */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-          backgroundSize: "40px 40px, 40px 40px",
-          backgroundPosition: "center",
-        }}
-      />
-
-      {/* Decorative: cyan arc on the right */}
-      <div
-        aria-hidden
-        className="absolute -right-32 bottom-0 h-[700px] w-[700px] rounded-full blur-3xl opacity-20"
-        style={{
-          background:
-            "conic-gradient(from 200deg at 50% 50%, rgba(6,182,212,.65), rgba(139,92,246,.25), transparent 70%)",
-        }}
-      />
-
+     
       {/* Content */}
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-10 lg:pb-28 sm:pt-28 sm:pb-28">
         {/* top badge */}
@@ -78,7 +54,7 @@ export default function Hero() {
         <div className="mt-8 flex items-center justify-center gap-4">
           <Button
             asChild
-            className="rounded-full px-6 py-5 text-base shadow-[0_0_0_1px_rgba(6,182,212,.35)_inset,0_8px_30px_rgba(6,182,212,.2)] bg-primary hover:bg-primary/90"
+            className="rounded-full px-6 py-5 text-base shadow-[0_0_0_1px_rgba(6,182,212,.35)_inset,0_8px_30px_rgba(6,182,212,.2)] bg-white hover:bg-primary/90"
           >
             <Link href="/signup">Enroll For Free</Link>
           </Button>
