@@ -13,7 +13,7 @@ export default function Hero() {
     >
      
       {/* Content */}
-      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-10 lg:pb-28 sm:pt-28 sm:pb-28">
+      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-5 lg:pb-28 sm:pt-28 sm:pb-28">
         {/* top badge */}
         <div className="flex justify-center">
      <div className="mx-auto mb-6 inline-flex max-w-[92vw] items-center gap-2
@@ -32,6 +32,7 @@ export default function Hero() {
           </Link>
         </div>
         </div>
+        <DividerArt/>
         <h1 className="mx-auto max-w-4xl text-center text-4xl font-bold tracking-tight sm:text-6xl">
           High-
          <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
@@ -67,7 +68,7 @@ export default function Hero() {
           </Link>
         </div>
 <div className="mt-10 text-center text-sm text-foreground/50"> Trusted by 4,000+ learners & 10+ Partners </div>
-      <DividerArt/>
+      
           
         {/* Mobile: one single scrolling row */}
 <div className="sm:hidden mt-6">

@@ -26,19 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             backgroundPosition: "center",
           }}
         />
-        {/* Decorative: cyan arc (fixed + clipped, no horizontal scroll) */}
-        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-          <div
-            className="
-              absolute top-20 right-0 translate-x-[200px]
-              h-[600px] w-[600px] rounded-full blur-3xl opacity-30
-            "
-            style={{
-              background:
-                "conic-gradient(from 200deg at 50% 50%, rgba(6,182,212,.65), rgba(139,92,246,.25), transparent 70%)",
-            }}
-          />
-        </div>
+     
 
 
 
