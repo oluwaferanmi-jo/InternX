@@ -135,3 +135,18 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee-anim { animation: none !important; transform: none !important; }
 }
+@keyframes badgeA {
+  0%   { left: 0%; }
+  100% { left: -100%; }  /* slides fully out to the left */
+}
+@keyframes badgeB {
+  0%   { left: 100%; }   /* starts off-screen right */
+  100% { left: 0%; }     /* arrives exactly as A leaves */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[badgeA_7s_linear_infinite\],
+  .animate-\[badgeB_7s_linear_infinite\] {
+    animation: none !important;
+  }
+}

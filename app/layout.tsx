@@ -6,36 +6,11 @@ import Navbar from "@/components/layout/navbar";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className="
-          relative min-h-screen font-sans antialiased
-          bg-gradient-to-b from-slate-900 via-slate-950 to-black text-foreground
-          overflow-x-hidden                         /* <-- allow vertical scroll */
-        "
-      >
-        {/* Decorative: faint grid */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0
-                     [mask-image:radial-gradient(70%_70%_at_50%_40%,black,transparent)]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), " +
-              "linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-            backgroundSize: "40px 40px, 40px 40px",
-            backgroundPosition: "center",
-          }}
-        />
-     
-
-
-
-        <div className="relative z-10">
-          <Navbar />
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-            {children}
-          </ThemeProvider>
-        </div>
+      <body className="min-h-screen font-sans antialiased">
+       < Navbar/>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
