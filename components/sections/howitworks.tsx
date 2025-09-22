@@ -44,18 +44,18 @@ export default function HowItWorks() {
   return (
     <section
       className="
-         relative -mt-8 sm:-mt-12
+        relative -mt-8 sm:-mt-12
         bg-white text-slate-900
-         rounded-t-2xl 
+        rounded-t-2xl
       "
     >
-      {/* container */}
-      <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20">
+      <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20 pb-16">
+      
         {/* Header */}
         <header className="mb-10 sm:mb-14 text-center">
           <h2 className="text-3xl font-bold sm:text-4xl">
             Want to learn how{" "}
-            <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-orange-400 via-amber-600 to-orange-600 bg-clip-text text-transparent">
               InternX
             </span>{" "}
             works?
@@ -71,13 +71,16 @@ export default function HowItWorks() {
           {STEPS.map((s, i) => (
             <article
               key={s.k}
+              style={{ animationDelay: `${i * 120}ms` }}
               className="
                 group relative overflow-hidden rounded-2xl
                 border border-white/10
                 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900
                 p-6 shadow-lg
-                transition-colors
-                hover:border-purple-400/40 hover:bg-purple-500/10
+                will-change-transform
+                animate-[cardIn_600ms_cubic-bezier(0.22,1,0.36,1)_both]
+                transition-transform
+                hover:-translate-y-1.5
               "
             >
               {/* Step badge */}
@@ -86,8 +89,8 @@ export default function HowItWorks() {
                 Step {i + 1}
               </div>
 
-              {/* Image or icon */}
-              <div className="relative mb-5 h-32 w-full">
+              {/* Image or icon (subtle float) */}
+              <div className="relative mb-5 h-32 w-full animate-[float_6s_ease-in-out_infinite]">
                 {s.img ? (
                   <Image
                     src={s.img}
@@ -107,7 +110,7 @@ export default function HowItWorks() {
                 {s.desc}
               </p>
 
-              {/* subtle hover underline */}
+              {/* purple glow underline on hover */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 scale-x-0 bg-gradient-to-r from-purple-500/0 via-purple-500 to-purple-500/0 transition-transform duration-300 group-hover:scale-x-100" />
             </article>
           ))}

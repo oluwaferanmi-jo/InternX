@@ -40,7 +40,7 @@ export default function Hero() {
         {/* top badge */}
         <div className="flex justify-center">
           <div
-            className="mx-auto mb-6 inline-flex max-w-[85vw] items-center gap-2
+            className="mx-auto mb-6 inline-flex max-w-[90vw] items-center gap-2
                        rounded-full border border-primary/40 bg-white/5 px-3 py-1
                        text-xs sm:text-sm text-foreground/80 backdrop-blur overflow-hidden"
           >
