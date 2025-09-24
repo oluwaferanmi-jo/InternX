@@ -50,6 +50,7 @@ export default function WhyChoose() {
         bg-gradient-to-b from-slate-950 via-black to-slate-900
         text-foreground
         border-y border-white/5
+        rounded-3xl
       "
     >
       {/* faint grid */}
