@@ -38,44 +38,43 @@ export default function Hero() {
       {/* Content */}
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-5 sm:pt-28 sm:pb-28 lg:pb-28">
         {/* top badge */}
-        <div className="flex justify-center">
-          <div
-            className="mx-auto mb-6 inline-flex max-w-[90vw] items-center gap-2
-                       rounded-full border border-primary/40 bg-white/5 px-3 py-1
-                       text-xs sm:text-sm text-foreground/80 backdrop-blur overflow-hidden"
-          >
-            {/* left dot */}
-            <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />
+      <div className="flex justify-center">
+  <div
+    className="mx-auto mb-6 inline-flex max-w-[90vw] sm:max-w-[70vw] md:max-w-[50vw] lg:max-w-[500px]
+               items-center gap-2 rounded-full border border-primary/30 bg-white/5
+               px-4 py-1.5 text-xs sm:text-sm text-foreground/80 backdrop-blur"
+  >
+    {/* Left dot */}
+    <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />
 
-            <span className="shrink-0 whitespace-nowrap text-foreground/70">
-              InternX Cohort-1
-            </span>
+    {/* Cohort label */}
+    <span className="shrink-0 whitespace-nowrap font-medium text-foreground/70">
+      InternX Cohort-1
+    </span>
 
-            {/* divider */}
-            <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
+    {/* divider */}
+    <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
 
-          {/* ONE-AT-A-TIME ticker (seamless) */}
-          <div className="relative overflow-hidden w-48 sm:w-56">
-            <div className="ticker-track flex items-center whitespace-nowrap">
-              <span className="ticker-item px-2">Check out the date</span>
-              {/* duplicate for seamless loop */}
-              <span className="ticker-item px-2" aria-hidden>Check out the date</span>
-              
-            </div>
-          </div>
+    {/* Ticker (static for now) */}
+    <div className="relative overflow-hidden w-40 sm:w-52 md:w-64">
+      <div className="flex items-center whitespace-nowrap text-foreground/70">
+        <span className="px-2 lg:px-10">Check out the date</span>
+      </div>
+    </div>
 
+    {/* divider */}
+    <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
 
-            {/* divider + Explore */}
-            <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
-            <Link
-              href="#features"
-              className="shrink-0 whitespace-nowrap rounded-full bg-[#ff5029] px-3 py-1
-                         text-foreground/90 hover:bg-primary/20"
-            >
-              Explore
-            </Link>
-          </div>
-        </div>
+    {/* Explore button */}
+    <Link
+      href="#features"
+      className="shrink-0 whitespace-nowrap rounded-full bg-[#ff5029] px-3 py-1 
+                 text-white text-xs sm:text-sm font-medium hover:bg-[#ff6845] transition-colors"
+    >
+      Explore
+    </Link>
+  </div>
+</div>
 
         <h1 className="mx-auto max-w-4xl text-center text-4xl font-bold tracking-tight sm:text-6xl">
   Kickstart Your{" "}
