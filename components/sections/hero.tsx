@@ -176,7 +176,7 @@ export default function Hero() {
           className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-foreground/70 sm:text-lg"
         >
           Apply to a proven internship program: learn from mentors, build real-world projects, 
-          and graduate with a portfolio that employers can't ignore.
+          and graduate with a portfolio that employers can&apos;t ignore.
         </motion.p>
 
         {/* Animated CTA buttons */}
