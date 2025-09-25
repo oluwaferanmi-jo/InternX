@@ -186,20 +186,57 @@
   animation: tickerMove 7s linear infinite;
 }
 
-/* Each item is inline-block so it doesn't wrap */
-.ticker-item {
-  display: inline-block;
-  color: rgba(255,255,255,0.7);  /* use your text color */
-  font-size: 0.875rem;           /* text-xs */
+/* Add this to your CSS file or tailwind.config.js */
+@keyframes scroll {
+  0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      5% {
+        transform: translateX(80%);
+        opacity: 1;
+      }
+      85% {
+        transform: translateX(-80%);
+        opacity: 1;
+      }
+      95% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+    }
+
+.animate-scroll {
+  animation: scroll 6s linear infinite;
 }
 
-/* the visible container clips overflow (already set by parent) */
-@keyframes tickerMove {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* move left by half = width of one copy */
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  5% {
+    transform: translateX(80%);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(-80%);
+    opacity: 1;
+  }
+  95% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 
-/* reduced motion respect */
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track { animation: none; transform: none; }
+.animate-scroll {
+  animation: scroll 4s linear infinite;
 }
