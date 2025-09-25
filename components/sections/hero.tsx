@@ -226,14 +226,13 @@ export default function Hero() {
           Trusted by 4,000+ learners & 10+ Partners
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={isInView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
-          transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-          style={{ transformOrigin: "center" }}
-        >
-          <DividerArt />
-        </motion.div>
+       <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+  transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+>
+  <DividerArt />
+</motion.div>
 
         {/* Mobile: animated scrolling row */}
         <motion.div
