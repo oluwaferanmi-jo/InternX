@@ -1,10 +1,12 @@
+// src/components/sections/tracks.tsx
 "use client";
 
 import { Code2, Cpu, Briefcase, BookOpen } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React from "react";
 
+/* tracks data (unchanged) */
 const tracks = [
   {
     id: "se",
@@ -13,8 +15,7 @@ const tracks = [
     description:
       "Ship maintainable apps using React, Next.js and TypeScript. Work on production-like projects, reviewable by hiring managers.",
     icon: <Code2 className="w-6 h-6" />,
-    gradient:
-      "linear-gradient(180deg,#FFEDD5 0%,#FFD1A8 50%,#FFE8D6 100%)",
+    gradient: "linear-gradient(180deg,#FFEDD5 0%,#FFD1A8 50%,#FFE8D6 100%)",
     textColor: "text-slate-900",
   },
   {
@@ -24,8 +25,7 @@ const tracks = [
     description:
       "Train models, analyze pipelines and build dashboards that reveal insights recruiters can evaluate.",
     icon: <Cpu className="w-6 h-6" />,
-    gradient:
-      "linear-gradient(180deg,#F3E8FF 0%,#E9D5FF 50%,#F6EEFF 100%)",
+    gradient: "linear-gradient(180deg,#F3E8FF 0%,#E9D5FF 50%,#F6EEFF 100%)",
     textColor: "text-slate-900",
   },
   {
@@ -35,8 +35,7 @@ const tracks = [
     description:
       "Learn discovery, roadmaps and stakeholder communication — deliver measurable product outcomes.",
     icon: <Briefcase className="w-6 h-6" />,
-    gradient:
-      "linear-gradient(180deg,#DBF4FF 0%,#CFEFFF 50%,#EBFAFF 100%)",
+    gradient: "linear-gradient(180deg,#DBF4FF 0%,#CFEFFF 50%,#EBFAFF 100%)",
     textColor: "text-slate-900",
   },
   {
@@ -46,15 +45,12 @@ const tracks = [
     description:
       "Master interviewing, teamwork and portfolio storytelling so you land roles faster.",
     icon: <BookOpen className="w-6 h-6" />,
-    gradient:
-      "linear-gradient(180deg,#DEF7EC 0%,#D1F6DF 50%,#ECFBEE 100%)",
+    gradient: "linear-gradient(180deg,#DEF7EC 0%,#D1F6DF 50%,#ECFBEE 100%)",
     textColor: "text-slate-900",
   },
 ];
 
-/** Reusable CTA component that navigates using next/navigation.
- *  Keeps framer-motion animation and avoids deprecated Link behavior.
- */
+/* Helper CTA component using next/navigation (keeps framer motion) */
 function TrackCta({ href, label }: { href: string; label?: string }) {
   const router = useRouter();
   return (
@@ -78,6 +74,34 @@ function TrackCta({ href, label }: { href: string; label?: string }) {
     </motion.button>
   );
 }
+
+/* FRAMER VARIANTS (typed) */
+/* Parent container controls staggered reveal of children */
+const containerVariants: Variants = {
+  hidden: { opacity: 1 }, // keep parent visible but children are hidden
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.14, // show each child slightly after previous
+      delayChildren: 0.08,
+    },
+  },
+};
+
+/* Card variants: stronger initial offset and a smoother, noticeable fade-in */
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 28, scale: 0.992 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.72,
+      // typed tuple for cubic-bezier easing
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  },
+};
 
 export default function Tracks() {
   return (
@@ -108,14 +132,18 @@ export default function Tracks() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {tracks.map((t, i) => (
+        {/* parent motion wrapper controls stagger */}
+        <motion.div
+          className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.22 }}
+        >
+          {tracks.map((t) => (
             <motion.article
               key={t.id}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: i * 0.06 }}
+              variants={cardVariants}
               whileHover={{ translateY: -8, boxShadow: "0 22px 40px rgba(2,6,23,0.12)" }}
               className="h-full"
             >
@@ -172,7 +200,7 @@ export default function Tracks() {
               </div>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Scoped styles: animated blobs and small tweaks */}

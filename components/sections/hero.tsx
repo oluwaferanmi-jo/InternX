@@ -54,26 +54,16 @@ export default function Hero() {
             {/* divider */}
             <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
 
-            {/* ONE-AT-A-TIME ticker */}
-            <div className="relative overflow-hidden w-48 sm:w-56 h-5">
-              {/* copy A */}
-              <span
-                className="absolute inset-y-0 left-0 flex items-center
-                           whitespace-nowrap text-foreground/70
-                           animate-[badgeA_7s_linear_infinite]"
-              >
-                Check out the date
-              </span>
-              {/* copy B */}
-              <span
-                className="absolute inset-y-0 left-full flex items-center
-                           whitespace-nowrap text-foreground/70
-                           animate-[badgeB_7s_linear_infinite]"
-                aria-hidden
-              >
-                Check out the date
-              </span>
+          {/* ONE-AT-A-TIME ticker (seamless) */}
+          <div className="relative overflow-hidden w-48 sm:w-56">
+            <div className="ticker-track flex items-center whitespace-nowrap">
+              <span className="ticker-item px-2">Check out the date</span>
+              {/* duplicate for seamless loop */}
+              <span className="ticker-item px-2" aria-hidden>Check out the date</span>
+              
             </div>
+          </div>
+
 
             {/* divider + Explore */}
             <span className="mx-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
@@ -134,7 +124,7 @@ export default function Hero() {
         <DividerArt />
 
         {/* Mobile: one single scrolling row */}
-        <div className="sm:hidden mt-6 mb-4">
+        <div className="sm:hidden mt-6 mb-10">
           <div className="relative overflow-hidden marquee-mask">
             <div className="marquee-anim flex w-[200%] animate-[marquee-x_18s_linear_infinite]">
               <MarqueeContent />

@@ -177,3 +177,29 @@
     transition: none !important;
   }
 }
+/* track is 200% width (2 copies side-by-side). We animate its translateX from 0 -> -50% */
+.ticker-track {
+  width: 200%;
+  display: flex;
+  gap: 0.5rem;                   /* spacing between copies */
+  transform: translateX(0);
+  animation: tickerMove 7s linear infinite;
+}
+
+/* Each item is inline-block so it doesn't wrap */
+.ticker-item {
+  display: inline-block;
+  color: rgba(255,255,255,0.7);  /* use your text color */
+  font-size: 0.875rem;           /* text-xs */
+}
+
+/* the visible container clips overflow (already set by parent) */
+@keyframes tickerMove {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* move left by half = width of one copy */
+}
+
+/* reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; transform: none; }
+}
