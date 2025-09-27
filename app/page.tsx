@@ -2,6 +2,7 @@ import Hero from "@/components/sections/hero";
 import HowItWorks from "@/components/sections/howitworks";
 import WhyChoose from "@/components/sections/why-choose";
 import Tracks from "@/components/sections/tracks";
+import Testimonial from "@/components/sections/testimonials";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HowItWorks />
       <WhyChoose />
       <Tracks/>
+      <Testimonial/>
       {/* next: Testimonials, Partners, Showcase, Pricing, FAQ, CTA, Footer */}
     </main>
   );
