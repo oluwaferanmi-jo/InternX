@@ -1,7 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import { Navigation, Pagination, Autoplay, EffectCards } from "swiper/modules";
+import { Navigation, Pagination, Autoplay} from "swiper/modules";
 import { motion, useInView, Variants } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-cards";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -18,7 +19,7 @@ const testimonials = [
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face&auto=format",
     rating: 5,
     company: "TechNation",
-    location: "Lagos, Nigeria"
+    location: "California, USA"
   },
   {
     name: "Mark Wolang", 
@@ -27,7 +28,7 @@ const testimonials = [
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
     rating: 5,
     company: "PayTech Solutions",
-    location: "Abuja, Nigeria"
+    location: "London, United Kingdom"
   },
   {
     name: "Amy Hunter",
@@ -36,7 +37,7 @@ const testimonials = [
     img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
     rating: 5,
     company: "Softwave Design",
-    location: "Port Harcourt, Nigeria"
+    location:  "Manchester, United Kingdom"
   },
   {
     name: "Roland white",
@@ -45,7 +46,7 @@ const testimonials = [
     img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
     rating: 5,
     company: "FinanceFlow",
-    location: "Lagos, Nigeria"
+    location:  "Georgia, USA"
   },
   {
     name: "Josephine Kirk",
@@ -54,7 +55,7 @@ const testimonials = [
     img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face",
     rating: 5,
     company: "CloudSync",
-    location: "Ibadan, Nigeria"
+    location: "Toronto, Canada"
   }
 ];
 
@@ -90,34 +91,21 @@ const cardVariants: Variants = {
 
 export default function Testimonial() {
   const ref = useRef(null);
-  const swiperRef = useRef<SwiperType | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
   const handleSlideChange = (swiper: SwiperType) => {
-    setActiveIndex(swiper.activeIndex);
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
   };
 
-  const handlePrevClick = () => {
-    if (!isBeginning && swiperRef.current) {
-      swiperRef.current.slidePrev();
-    }
-  };
-
-  const handleNextClick = () => {
-    if (!isEnd && swiperRef.current) {
-      swiperRef.current.slideNext();
-    }
-  };
+ 
 
   return (
     <section 
       ref={ref}
-      className="relative py-10 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden"
+      className="relative py-10 bg-gradient-to-br rounded-t-2xl from-gray-50 via-white to-blue-50 overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -159,7 +147,7 @@ export default function Testimonial() {
             variants={itemVariants}
             className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
           >
-            Don't just take our word for it. Here's what industry leaders and hiring managers say about InternX graduates.
+            Don&apos;t just take our word for it. Here&apos;s what industry leaders and hiring managers say about InternX graduates.
           </motion.p>
         </motion.div>
 
@@ -213,7 +201,7 @@ export default function Testimonial() {
                   }}
                   className="group h-full"
                 >
-                  <div className="relative h-full bg-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-700 overflow-hidden">
+                  <div className="relative h-full bg-slate-900 rounded-3xl p-8 -mb-4ssssss shadow-2xl border border-slate-700 overflow-hidden">
                     {/* Quote Icon */}
                     <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center opacity-15 group-hover:opacity-25 transition-opacity duration-300">
                       <Quote className="w-8 h-8 text-white" />
@@ -228,17 +216,19 @@ export default function Testimonial() {
 
                     {/* Testimonial Text */}
                     <blockquote className="text-gray-300 text-lg leading-relaxed mb-8 font-medium">
-                      "{testimonial.text}"
+                      &quot;{testimonial.text} &quot;
                     </blockquote>
 
                     {/* Author */}
                     <div className="flex items-center gap-4">
                       <div className="relative">
-                        <img
-                          src={testimonial.img}
-                          alt={testimonial.name}
-                          className="w-16 h-16 rounded-2xl object-cover shadow-lg"
-                        />
+                    <Image
+                    src={testimonial.img}
+                    alt={testimonial.name}
+                    width={64}
+                    height={64}
+                    className="w-16 h-16 rounded-2xl object-cover shadow-lg"
+                    />
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-500/20 to-purple-500/20"></div>
                       </div>
                       
