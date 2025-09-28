@@ -129,7 +129,7 @@ export default function Testimonial() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
             <Star className="w-4 h-4 fill-current" />
@@ -138,14 +138,14 @@ export default function Testimonial() {
           
           <motion.h2 
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-6"
+            className="text-2xl md:text-4xl lg:text-4xl font-bold bg-gradient-to-r from-slate-900 via-black to-slate-900 bg-clip-text text-transparent mb-6"
           >
             What Top Tech Leaders Say
           </motion.h2>
           
           <motion.p 
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            className="text-s text-gray-600 max-w-2xl mx-auto leading-relaxed"
           >
             Don&apos;t just take our word for it. Here&apos;s what industry leaders and hiring managers say about InternX graduates.
           </motion.p>
