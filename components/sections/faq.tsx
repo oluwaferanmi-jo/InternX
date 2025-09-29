@@ -31,7 +31,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function FAQs() {
-  const [openId, setOpenId] = useState<string | null>(FAQ_ITEMS[0].id);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   function toggle(id: string) {
     setOpenId((prev) => (prev === id ? null : id));
@@ -57,7 +57,7 @@ export default function FAQs() {
                 href="/faq"
                 className="inline-block rounded-sm bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-800"
               >
-                Learn more
+                Contact us 
               </Link>
             </div>
           </div>
