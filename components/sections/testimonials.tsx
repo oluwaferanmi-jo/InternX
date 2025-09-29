@@ -138,7 +138,7 @@ export default function Testimonial() {
           
           <motion.h2 
             variants={itemVariants}
-            className="text-2xl md:text-4xl lg:text-4xl font-bold bg-gradient-to-r from-slate-900 via-black to-slate-900 bg-clip-text text-transparent mb-6"
+            className="hidden text-2xl md:text-4xl lg:text-4xl font-bold bg-gradient-to-r from-slate-900 via-black to-slate-900 bg-clip-text text-transparent mb-6"
           >
             What Top Tech Leaders Say
           </motion.h2>
@@ -201,7 +201,7 @@ export default function Testimonial() {
                   }}
                   className="group h-full"
                 >
-                  <div className="relative h-full bg-slate-900 rounded-3xl p-8 -mb-4ssssss shadow-2xl border border-slate-700 overflow-hidden">
+                  <div className="relative h-full  bg-slate-900 rounded-3xl p-4 -mb-4ssssss shadow-2xl border border-slate-700 overflow-hidden">
                     {/* Quote Icon */}
                     <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center opacity-15 group-hover:opacity-25 transition-opacity duration-300">
                       <Quote className="w-8 h-8 text-white" />
@@ -248,7 +248,7 @@ export default function Testimonial() {
           </Swiper>
 
           {/* Custom Navigation */}
-          <div className="flex items-center justify-center mt-0">
+          <div className="hidden md:flex items-center justify-center mt-0">
             <div className="flex items-center gap-6">
               <button className="swiper-button-prev-custom group flex items-center justify-center w-12 h-12 bg-slate-800 shadow-lg rounded-full border border-slate-600 hover:bg-slate-700 hover:border-slate-500 transition-all duration-300">
                 <ChevronLeft className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
