@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Award, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function CTA() {
   return (
@@ -45,29 +46,59 @@ export default function CTA() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 py-12 md:py-12">
         <div className="flex flex-col-reverse items-center gap-12 lg:flex-row lg:gap-16">
           {/* Left: Enhanced text with social proof */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
+          <motion.div 
+            className="w-full lg:w-1/2 text-center lg:text-left"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 mb-6">
+            <motion.div 
+              className="hidden lg:inline-flex items-center gap-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 mb-6"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <TrendingUp className="h-4 w-4 text-cyan-400" />
-              <span className="text-sm font-medium text-cyan-300">
+              <span className=" text-sm font-medium text-white">
                 Join 4,000+ aspiring tech professionals
               </span>
-            </div>
+            </motion.div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-              Build real projects.{" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                Land real jobs.
+            <motion.h2 
+              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              Want to build real projects and {" "}
+              <span className="bg-gradient-to-r from-orange-300 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+                land real jobs?
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="mt-6 text-lg text-slate-300 max-w-xl mx-auto lg:mx-0">
+           <motion.p 
+             className="hidden lg:block mt-6 text-base text-slate-300 max-w-xl mx-auto lg:mx-0"
+             initial={{ opacity: 0 }}
+             whileInView={{ opacity: 1 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6, delay: 0.4 }}
+           >
               Stop watching tutorials. Start shipping production-grade apps with mentor guidance, 
-              peer collaboration, and a portfolio that makes recruiters reach out to <em>you</em>.
-            </p>
+              peer collaboration, and a portfolio that makes recruiters reach out to you.
+            </motion.p>
 
             {/* Stats row */}
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm">
+            <motion.div 
+              className=" hidden  mt-8 md:flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
               <div className="flex items-center gap-2">
                 <Users className="h-5 w-5 text-cyan-400" />
                 <span className="text-slate-400">4,000+ learners</span>
@@ -80,37 +111,65 @@ export default function CTA() {
                 <TrendingUp className="h-5 w-5 text-emerald-400" />
                 <span className="text-slate-400">85% job placement</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* CTAs */}
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <motion.div 
+              className="mt-6 flex flex-row sm:flex-row items-center justify-center lg:justify-start gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
               <Button
                 asChild
-                className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300 hover:scale-105"
+                className="group relative inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-base font-semibold text-black shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300 hover:scale-105"
               >
                 <Link href="/signup">
                   Enroll For Free
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+     
                 </Link>
               </Button>
 
+              <Link
+                href="#tracks"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-white/20 px-7 py-1.5 text-base font-medium text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+              >
+                Explore Tracks
+              </Link>
              
-            </div>
+            </motion.div>
 
-            <p className="mt-6 text-sm text-slate-500">
+            <motion.p 
+              className="hidden lg:block mt-6 text-sm text-slate-500"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
               No credit card required • Start immediately • Cancel anytime
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Right: Enhanced visual with floating elements */}
-          <div className="w-full lg:w-1/2 flex justify-center">
+          <motion.div 
+            className="w-full lg:w-1/2 flex justify-center"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className="relative">
               {/* Main image container with glow */}
-              <div className="relative w-[300px] sm:w-[400px] md:w-[480px] rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20">
+              <motion.div 
+                className="relative w-[300px] sm:w-[400px] md:w-[480px] rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-3xl" />
                 
                 <Image
-                  src="/man.svg"
+                  src="/cta2.svg"
                   alt="Student working on InternX project"
                   width={480}
                   height={480}
@@ -126,25 +185,11 @@ export default function CTA() {
                     boxShadow: "inset 0 -40px 100px rgba(2,6,23,0.6)",
                   }}
                 />
-              </div>
+              </motion.div>
 
-              {/* Floating stat cards */}
-              <div className="absolute -top-6 -right-6 bg-slate-800/90 backdrop-blur-sm border border-cyan-500/30 rounded-2xl px-5 py-3 shadow-xl">
-                <div className="text-2xl font-bold text-cyan-400">12 weeks</div>
-                <div className="text-xs text-slate-400">to portfolio ready</div>
-              </div>
-
-              <div className="absolute -bottom-8 -left-8 bg-slate-800/90 backdrop-blur-sm border border-purple-500/30 rounded-2xl px-5 py-3 shadow-xl z-20">
-                <div className="text-2xl font-bold text-purple-400">10-15hrs</div>
-                <div className="text-xs text-slate-400">per week</div>
-              </div>
-
-              {/* Pulsing ring */}
-              <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500/30 to-purple-500/30 blur-2xl animate-pulse" />
-              </div>
+            
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
