@@ -67,7 +67,7 @@ export default function CTA() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 py-12 md:py-14">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 py-8 md:py-14">
         <div className="flex flex-col-reverse items-center gap-10 lg:flex-row lg:gap-16">
           {/* Left text */}
           <motion.div
@@ -83,7 +83,7 @@ export default function CTA() {
               <span className="text-sm font-medium text-white">Join 4,000+ aspiring tech professionals</span>
             </motion.div>
 
-            <motion.h2 variants={itemVariants} className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+            <motion.h2 variants={itemVariants} className="text-2xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
               Want to build real projects and{" "}
               <span className="bg-gradient-to-r from-orange-300 via-amber-500 to-orange-600 bg-clip-text text-transparent">
                 land real jobs?
@@ -111,15 +111,33 @@ export default function CTA() {
             </div>
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-row md:flex-row items-stretch md:items-center justify-center lg:justify-start gap-4">
-              <Link href="/signup" className="w-auto md:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-3.5 text-base font-semibold text-black shadow transition-all duration-200">
+       
+            {/* CTAs */}
+            <div className="mt-8 flex flex-row flex-wrap gap-4 justify-center lg:justify-start">
+              <Link
+                href="/signup"
+                className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-medium
+                          shadow-[0_0_0_1px_rgba(6,182,212,.35)_inset,0_8px_30px_rgba(6,182,212,.2)]
+                          bg-white text-black hover:bg-primary/90
+                          transition-transform motion-safe:duration-200
+                          hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+              >
                 Enroll For Free
               </Link>
 
-              <Link href="#tracks" className="w-auto md:w-auto inline-flex items-center justify-center rounded-lg border-2 border-white/20 px-8 py-3.5 text-base font-medium text-white hover:bg-white/6 transition-all duration-200">
-                Explore Tracks
+              <Link
+                href="#demo"
+                className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-medium
+                          text-foreground/80 hover:bg-white/5
+                          transition-colors transition-transform motion-safe:duration-200
+                          hover:scale-105 hover:-translate-y-0.5 active:scale-95"
+              >
+                View Tracks
               </Link>
             </div>
+
+
+      
 
             <p className="hidden lg:block mt-6 text-sm text-slate-500">No credit card required • Start immediately • Cancel anytime</p>
           </motion.div>
