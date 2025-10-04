@@ -1,12 +1,18 @@
 // src/components/sections/tracks.tsx
 "use client";
 
+import React from "react";
 import { Code2, Cpu, Briefcase, BookOpen } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Image from "next/image";
 
-/* tracks data (unchanged) */
+/* tracks data */
 const tracks = [
   {
     id: "se",
@@ -48,9 +54,26 @@ const tracks = [
     gradient: "linear-gradient(180deg,#DEF7EC 0%,#D1F6DF 50%,#ECFBEE 100%)",
     textColor: "text-slate-900",
   },
+  {
+    id: "design",
+    title: "UI/UX Design",
+    tagline: "Design beautiful products",
+    description: "Learn Figma, user research, and design systems to craft polished interfaces.",
+    icon: <BookOpen className="w-6 h-6" />,
+    gradient: "linear-gradient(180deg,#FEF3C7 0%,#FDE68A 50%,#FFF7ED 100%)",
+    textColor: "text-slate-900",
+  },
+  {
+    id: "mobile",
+    title: "Mobile Development",
+    tagline: "Native & cross-platform",
+    description: "Build mobile apps using React Native and platform best practices.",
+    icon: <Cpu className="w-6 h-6" />,
+    gradient: "linear-gradient(180deg,#E8F9FF 0%,#DFF5FF 50%,#F3FBFF 100%)",
+    textColor: "text-slate-900",
+  },
 ];
 
-/* Helper CTA component using next/navigation (keeps framer motion) */
 function TrackCta({ href, label }: { href: string; label?: string }) {
   const router = useRouter();
   return (
@@ -64,8 +87,7 @@ function TrackCta({ href, label }: { href: string; label?: string }) {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium
                  bg-white/95 text-slate-900 shadow-sm hover:shadow-lg
-                 ring-1 ring-white/40 hover:ring-2 hover:ring-offset-1 hover:ring-purple-300/30
-                 lg:px-2 lg:py-1 lg:text-xs"
+                 ring-1 ring-white/40 hover:ring-2 hover:ring-offset-1 hover:ring-purple-300/30"
       style={{ backdropFilter: "saturate(1.05) blur(2px)", boxShadow: "0 8px 24px rgba(2,6,23,0.08)" }}
     >
       <span className="hidden sm:inline">View Track</span>
@@ -75,38 +97,31 @@ function TrackCta({ href, label }: { href: string; label?: string }) {
   );
 }
 
-/* FRAMER VARIANTS (typed) */
-/* Parent container controls staggered reveal of children */
+/* FRAMER VARIANTS */
 const containerVariants: Variants = {
-  hidden: { opacity: 1 }, // keep parent visible but children are hidden
+  hidden: { opacity: 1 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.14, // show each child slightly after previous
-      delayChildren: 0.08,
+      staggerChildren: 0.12,
+      delayChildren: 0.06,
     },
   },
 };
 
-/* Card variants: stronger initial offset and a smoother, noticeable fade-in */
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 28, scale: 0.992 },
+  hidden: { opacity: 0, y: 20, scale: 0.995 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: {
-      duration: 0.72,
-      // typed tuple for cubic-bezier easing
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
 export default function Tracks() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
-      {/* animated blobs behind the grid */}
+    <section className="relative overflow-hidden bg-white py-12 sm:py-16">
       <div aria-hidden className="absolute inset-0 pointer-events-none -z-10">
         <div className="blob b1" />
         <div className="blob b2" />
@@ -132,78 +147,145 @@ export default function Tracks() {
           </p>
         </div>
 
-        {/* parent motion wrapper controls stagger */}
+        {/* track pills */}
+        <div className="hidden mt-6 lg:flex flex-wrap gap-3 justify-center">
+          {tracks.map((t) => (
+            <button
+              key={t.id}
+              className="px-4 py-2 rounded-full bg-slate-100 text-slate-800 text-sm font-medium shadow-sm hover:shadow-md transition"
+            >
+              {t.title}
+            </button>
+          ))}
+        </div>
+
+        {/* Swiper for tracks */}
         <motion.div
-          className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.22 }}
         >
-          {tracks.map((t) => (
-            <motion.article
-              key={t.id}
-              variants={cardVariants}
-              whileHover={{ translateY: -8, boxShadow: "0 22px 40px rgba(2,6,23,0.12)" }}
-              className="h-full"
+          <div className="mx-auto w-full max-w-5xl">
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={36}
+              slidesPerView={1}
+              centeredSlides
+              navigation={{
+                prevEl: ".swiper-button-prev-custom",
+                nextEl: ".swiper-button-next-custom",
+              }}
+              pagination={{
+                el: ".swiper-pagination-custom",
+                clickable: true,
+              }}
+              autoplay={{ delay: 7000, disableOnInteraction: false }}
+              className="!pb-6"
             >
-              <div
-                className={`h-full flex flex-col justify-between rounded-2xl p-6 sm:p-6`}
-                style={{
-                  background: t.gradient,
-                  border: "1px solid rgba(2,6,23,0.04)",
-                  boxShadow: "0 6px 18px rgba(2,6,23,0.06)",
-                  minHeight: 340, // consistent card size
-                }}
-              >
-                <div className="flex-1">
-                  <div
-                    className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl shadow"
-                    style={{
-                      background: "rgba(255,255,255,0.85)",
-                      border: "1px solid rgba(2,6,23,0.04)",
-                      filter: "saturate(1.05)",
-                    }}
+              {tracks.map((t) => (
+                <SwiperSlide key={t.id}>
+                  <motion.article
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate="show"
+                    whileHover={{ translateY: -6, boxShadow: "0 22px 40px rgba(2,6,23,0.12)" }}
+                    className="mx-auto"
                   >
-                    <div className={`${t.textColor}`}>{t.icon}</div>
-                  </div>
-
-                  <div className="text-center">
-                    <h3 className={`text-lg font-semibold ${t.textColor}`}>{t.title}</h3>
-                    <div className="text-xs text-slate-600 mt-1">{t.tagline}</div>
-                  </div>
-
-                  <div className="mt-4 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-
-                  <p className={`mt-4 text-sm leading-6 ${t.textColor} text-opacity-95`}>
-                    {t.description}
-                  </p>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className=" lg:hidden text-xs text-slate-700/90">Duration</div>
                     <div
-                      className="rounded-full px-3 py-1 text-xs font-medium"
+                      className="rounded-3xl overflow-hidden shadow-lg"
                       style={{
-                        background: "black",
+                        minHeight: 420,
                         border: "1px solid rgba(2,6,23,0.04)",
-                        color: "white",
+                        background: t.gradient,
                       }}
                     >
-                      8–12 weeks
-                    </div>
-                  </div>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+                        {/* Left: content */}
+                        <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+                          <div>
+                            {/* title + logo side by side */}
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <h3 className={`text-2xl font-semibold ${t.textColor}`}>{t.title}</h3>
+                                <div className="text-sm text-slate-600 mt-1">{t.tagline}</div>
+                              </div>
 
-                  <TrackCta href={`/tracks/${t.id}`} label={`View ${t.title} track`} />
-                </div>
-              </div>
-            </motion.article>
-          ))}
+                              <div
+                                className="flex h-12 w-12 items-center justify-center rounded-xl shadow shrink-0"
+                                style={{ background: "rgba(255,255,255,0.88)", border: "1px solid rgba(2,6,23,0.04)" }}
+                              >
+                                <div className={t.textColor}>{t.icon}</div>
+                              </div>
+                            </div>
+
+                            <div className="mt-6 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+
+                            <p className={`mt-4 text-sm leading-7 ${t.textColor} text-opacity-95`}>
+                              {t.description}
+                            </p>
+                          </div>
+
+                          <div className="mt-6 flex items-center justify-between gap-4">
+                            <div
+                              className="rounded-full px-3 py-1 text-xs font-medium"
+                              style={{
+                                background: "black",
+                                border: "1px solid rgba(2,6,23,0.04)",
+                                color: "white",
+                              }}
+                            >
+                              8–12 weeks
+                            </div>
+                            <TrackCta href={`/tracks/${t.id}`} label={`View ${t.title} track`} />
+                          </div>
+                        </div>
+
+                        {/* Right: illustration */}
+                        <div className="lg:flex items-center justify-center p-6 lg:p-10 bg-transparent">
+                          <Image
+                            src="/Collage.svg"
+                            alt={`${t.title} illustration`}
+                            width={520}
+                            height={520}
+                            className="object-contain max-h-[360px] select-none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* navigation */}
+            <div className="hidden mt-4 lg:flex items-center justify-center gap-6">
+              <button
+                className="swiper-button-prev-custom flex items-center justify-center w-10 h-10 bg-white rounded-full shadow border border-gray-200"
+                aria-label="Previous track"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-slate-600">
+                  <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div className="swiper-pagination-custom flex items-center gap-2" />
+
+              <button
+                className="swiper-button-next-custom flex items-center justify-center w-10 h-10 bg-white rounded-full shadow border border-gray-200"
+                aria-label="Next track"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-slate-600">
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </motion.div>
       </div>
 
-      {/* Scoped styles: animated blobs and small tweaks */}
+      {/* blobs */}
       <style jsx>{`
         .blob {
           position: absolute;
@@ -235,26 +317,10 @@ export default function Tracks() {
           background: radial-gradient(circle at 30% 80%, rgba(6,182,212,0.85), rgba(34,211,238,0.35) 40%, transparent 70%);
           animation: blobMove3 16s linear infinite;
         }
-
-        @keyframes blobMove1 {
-          0% { transform: translate3d(0,0,0) scale(1); }
-          50% { transform: translate3d(10px,12px,0) scale(1.03); }
-          100% { transform: translate3d(0,0,0) scale(1); }
-        }
-        @keyframes blobMove2 {
-          0% { transform: translate3d(0,0,0) scale(1); }
-          50% { transform: translate3d(-8px,-10px,0) scale(1.02); }
-          100% { transform: translate3d(0,0,0) scale(1); }
-        }
-        @keyframes blobMove3 {
-          0% { transform: translate3d(0,0,0) scale(1); }
-          50% { transform: translate3d(6px,-8px,0) scale(1.01); }
-          100% { transform: translate3d(0,0,0) scale(1); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .blob { animation: none !important; }
-        }
+        @keyframes blobMove1 { 0%,100%{transform:translate3d(0,0,0)scale(1);}50%{transform:translate3d(10px,12px,0)scale(1.03);} }
+        @keyframes blobMove2 { 0%,100%{transform:translate3d(0,0,0)scale(1);}50%{transform:translate3d(-8px,-10px,0)scale(1.02);} }
+        @keyframes blobMove3 { 0%,100%{transform:translate3d(0,0,0)scale(1);}50%{transform:translate3d(6px,-8px,0)scale(1.01);} }
+        @media (prefers-reduced-motion: reduce) { .blob { animation: none !important; } }
       `}</style>
     </section>
   );

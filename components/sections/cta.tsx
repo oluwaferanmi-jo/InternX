@@ -168,7 +168,7 @@ export default function CTA() {
               </div>
             </div>
           </motion.div>
-        </div>
+        </div>s
       </div>
     </section>
   );
