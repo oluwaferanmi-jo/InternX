@@ -32,7 +32,7 @@ export default function CTA() {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-gray-800 text-white rounded-xl"
+      className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-gray-800 text-white rounded-t-3xl"
       aria-label="Call to action — join InternX"
     >
       {/* Light-weight grid background (reduced opacity, no heavy mask) */}
