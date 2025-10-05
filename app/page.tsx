@@ -5,6 +5,7 @@ import Tracks from "@/components/sections/tracks";
 import Testimonial from "@/components/sections/testimonials";
 import FAQs from "@/components/sections/faq";
 import CTA from "@/components/sections/cta";
+import Footer from "@/components/sections/footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <FAQs/>
       <Testimonial/>
       <CTA/>
+      <Footer/>
 
       {/* next: Testimonials, Partners, Showcase, Pricing, FAQ, CTA, Footer */}
     </main>

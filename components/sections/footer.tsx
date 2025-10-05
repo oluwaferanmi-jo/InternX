@@ -1,178 +1,92 @@
-// components/sections/Footer.tsx
+// src/components/Footer.tsx
 "use client";
 
 import React from "react";
-import { Twitter, Linkedin, Github, Mail, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Twitter, Linkedin, Github, Mail } from "lucide-react";
+
+const SOCIAL_LINKS = [
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Github, href: "#", label: "GitHub" },
+  { icon: Mail, href: "#", label: "Email" },
+];
+
+const QUICK_LINKS = [
+  { name: "About", href: "#" },
+  { name: "Tracks", href: "#" },
+  { name: "FAQs", href: "#" },
+  { name: "Contact", href: "#" },
+];
 
 export default function Footer() {
-  const handleSubscribe = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Newsletter subscription");
-  };
-
   return (
-    <footer className="bg-slate-950 text-slate-300">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
-          {/* Brand column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500">
-                <span className="text-lg font-bold text-white">X</span>
-              </div>
-              <span className="text-xl font-bold text-white">InternX</span>
-            </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-              Empowering the next generation of tech professionals through cohort-based internships, 
-              real-world projects, and industry mentorship.
-            </p>
+    <footer className="bg-black  text-slate-300">
+      <div className="max-w-7xl mx-auto px-6 lg:px-6 py-12">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
             
-            {/* Social links */}
-            <div className="mt-6 flex items-center gap-4">
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 transition hover:border-cyan-500 hover:text-cyan-400"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 transition hover:border-cyan-500 hover:text-cyan-400"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 transition hover:border-cyan-500 hover:text-cyan-400"
-                aria-label="GitHub"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-              <a
-                href="mailto:hello@internx.com"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 text-slate-400 transition hover:border-cyan-500 hover:text-cyan-400"
-                aria-label="Email"
-              >
-                <Mail className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Product links */}
-          <div>
-            <h3 className="text-sm font-semibold text-white">Product</h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <Link href="#tracks" className="text-sm transition hover:text-cyan-400">
-                  Tracks
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="text-sm transition hover:text-cyan-400">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-sm transition hover:text-cyan-400">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="/mentors" className="text-sm transition hover:text-cyan-400">
-                  Mentors
-                </Link>
-              </li>
-              <li>
-                <Link href="/demo-day" className="text-sm transition hover:text-cyan-400">
-                  Demo Day
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company links */}
-          <div>
-            <h3 className="text-sm font-semibold text-white">Company</h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <Link href="/about" className="text-sm transition hover:text-cyan-400">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="text-sm transition hover:text-cyan-400">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-sm transition hover:text-cyan-400">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/partners" className="text-sm transition hover:text-cyan-400">
-                  Partners
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-sm transition hover:text-cyan-400">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-sm font-semibold text-white">Stay Updated</h3>
-            <p className="mt-4 text-sm text-slate-400">
-              Get the latest news and updates about cohorts.
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">InternX</h3>
+            <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
+              Transforming careers through hands-on learning and real-world experience.
             </p>
-            <div className="mt-4 flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
-              />
-              <button
-                onClick={handleSubscribe}
-                className="flex items-center justify-center rounded-lg bg-cyan-500 px-3 py-2 text-white transition hover:bg-cyan-600"
-                aria-label="Subscribe"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </button>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+              Quick Links
+            </h4>
+            <ul className="space-y-2">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-sm hover:text-sky-400 transition-colors duration-200"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social Links */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+              Connect
+            </h4>
+            <div className="flex gap-3">
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-10 h-10 rounded-full bg-slate-800 hover:bg-sky-500 flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  >
+                    <Icon size={18} />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-slate-800 py-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-slate-500">
-              © {new Date().getFullYear()} InternX. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6 text-sm">
-              <Link href="/privacy" className="transition hover:text-cyan-400">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="transition hover:text-cyan-400">
-                Terms of Service
-              </Link>
-              <Link href="/cookies" className="transition hover:text-cyan-400">
-                Cookies
-              </Link>
-            </div>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-slate-500">
+            © {new Date().getFullYear()} InternX. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-sm">
+            <a href="#" className="hover:text-sky-400 transition-colors">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-sky-400 transition-colors">
+              Terms
+            </a>
           </div>
         </div>
       </div>
