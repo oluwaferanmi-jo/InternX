@@ -32,7 +32,7 @@ export default function CTA() {
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-black text-white rounded-t-3xl"
+      className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-gray-800 text-white rounded-xl"
       aria-label="Call to action — join InternX"
     >
       {/* Light-weight grid background (reduced opacity, no heavy mask) */}
@@ -90,27 +90,7 @@ export default function CTA() {
               </span>
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="hidden lg:block mt-5 text-base text-slate-300 max-w-xl lg:mx-0">
-              Stop watching tutorials. Start shipping production-grade apps with mentor guidance, peer collaboration, and a portfolio that makes recruiters reach out to you.
-            </motion.p>
-
-            {/* Stats row (static icons; minimal animation) */}
-            <div className="hidden md:flex mt-8 flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-slate-400">
-              <div className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-cyan-400" />
-                <span>4,000+ learners</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Award className="h-5 w-5 text-purple-400" />
-                <span>10+ hiring partners</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-emerald-400" />
-                <span>85% job placement</span>
-              </div>
-            </div>
-
-            {/* CTAs */}
+        
        
             {/* CTAs */}
             <div className="mt-8 flex flex-row flex-wrap gap-4 justify-center lg:justify-start">
@@ -168,7 +148,7 @@ export default function CTA() {
               </div>
             </div>
           </motion.div>
-        </div>s
+        </div>
       </div>
     </section>
   );

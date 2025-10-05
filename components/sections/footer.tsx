@@ -20,22 +20,23 @@ const QUICK_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black  text-slate-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-6 py-12">
+    <footer className="bg-white border-t border-slate-200">
+      <div className="max-w-7xl mx-auto px-6 lg:px-20 py-12">
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">InternX</h3>
-            <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+              InternX
+            </h3>
+            <p className="text-sm leading-relaxed text-slate-600 max-w-xs">
               Transforming careers through hands-on learning and real-world experience.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+            <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -43,7 +44,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm hover:text-sky-400 transition-colors duration-200"
+                    className="text-sm text-slate-600 hover:text-orange-500 transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -54,7 +55,7 @@ export default function Footer() {
 
           {/* Social Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+            <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">
               Connect
             </h4>
             <div className="flex gap-3">
@@ -65,7 +66,7 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-full bg-slate-800 hover:bg-sky-500 flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-10 h-10 rounded-full bg-slate-100 hover:bg-orange-500 text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <Icon size={18} />
                   </a>
@@ -76,15 +77,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-slate-500">
             © {new Date().getFullYear()} InternX. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="hover:text-sky-400 transition-colors">
+            <a href="#" className="text-slate-600 hover:text-orange-500 transition-colors">
               Privacy
             </a>
-            <a href="#" className="hover:text-sky-400 transition-colors">
+            <a href="#" className="text-slate-600 hover:text-orange-500 transition-colors">
               Terms
             </a>
           </div>
