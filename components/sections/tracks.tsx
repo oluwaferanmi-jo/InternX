@@ -108,7 +108,7 @@ export default function Tracks() {
                 type: "spring",
                 stiffness: 200
               }}
-              className="absolute -top-3 sm:-top-4 left-2 sm:left-4 w-[220px] sm:w-[280px] bg-white/98 backdrop-blur-sm shadow-2xl rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-slate-200/80"
+              className="absolute -top-3 sm:-top-4 left-2 sm:left-4 lg:w-[220px] w-[210px] bg-white/98 backdrop-blur-sm shadow-2xl rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-slate-200/80"
               style={{ zIndex: 30 }}
             >
               <div className="font-semibold text-slate-900 text-xs sm:text-sm mb-2 sm:mb-3">
