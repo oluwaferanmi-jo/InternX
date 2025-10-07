@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { motion, useInView, Variants } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";

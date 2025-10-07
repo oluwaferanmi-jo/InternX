@@ -35,7 +35,7 @@ export default function EnrollmentPage() {
               </h1>
 
               <p className="text-base text-black/70 max-w-xl">
-                HNG Internship is a way to rapidly upskill yourself. It's an 8-weeks free boot camp where 
+                HNG Internship is a way to rapidly upskill yourself. It&apos;s an 8-weeks free boot camp where 
                 you will learn to solve hard problems, quickly learn new technologies and make a lot of Tech friends.
               </p>
 

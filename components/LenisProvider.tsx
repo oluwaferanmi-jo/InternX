@@ -1,50 +1,62 @@
-// components/SmoothScroll.tsx
-'use client'
+// src/components/LenisProvider.tsx
+"use client";
 
-import { useEffect } from 'react'
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
+import { useEffect } from "react";
+import Lenis, { type LenisOptions } from "lenis";
+import "lenis/dist/lenis.css";
 
-export default function SmoothScroll() {
+export default function LenisProvider(): null {
   useEffect(() => {
-    const wrapper = document.getElementById('enroll-lenis-wrapper')
+    // Optional: wrapper id used when you want Lenis to control a specific container.
+    const wrapperEl = document.getElementById("enroll-lenis-wrapper");
 
-    // base options same as yours
-    const options: any = {
-      autoRaf: true,
+    // Base config as a partial of LenisOptions (safe w/ TS)
+    const baseOptions: Partial<LenisOptions> = {
+      // smoothing using lerp gives continuous inertia
+      lerp: 0.06,
+      // fallback duration/easing for programmatic scrolls
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1,
       autoResize: true,
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+    };
+
+    // Build final options object (we'll add wrapper/content only if we have elements)
+    const finalOpts = { ...baseOptions } as Record<string, unknown>;
+
+    if (wrapperEl) {
+      // assign wrapper/content only when the element exists (never assign null)
+      finalOpts.wrapper = wrapperEl;
+      finalOpts.content = (wrapperEl.firstElementChild as Element) ?? wrapperEl;
     }
 
-    if (wrapper) {
-      // Some Lenis builds accept `wrapper` and `content` nodes — set them
-      options.wrapper = wrapper
-      // If the scrollable content is the left column, point to it. Here we use the first child as content fallback.
-      options.content = (wrapper.firstElementChild as HTMLElement) ?? wrapper
+    // Cast to LenisOptions when calling constructor (runtime shape is correct)
+    const lenis = new Lenis(finalOpts as LenisOptions);
+
+    // Use an RAF loop that calls lenis.raf if available on this build
+    function raf(time: number) {
+      // lenis may expose raf; call it via an unknown-cast to avoid `any`
+      (lenis as unknown as { raf?: (t: number) => void }).raf?.(time);
+      requestAnimationFrame(raf);
     }
+    requestAnimationFrame(raf);
 
-    const lenis = new Lenis(options)
-
-    // No manual RAF loop needed because autoRaf: true
-    // But if you ever disable autoRaf, use:
-    // function raf(t: number) { lenis.raf(t); requestAnimationFrame(raf) }
-    // requestAnimationFrame(raf)
-
-    // Expose in dev for quick debugging
-    if (process.env.NODE_ENV === 'development') (window as any).lenis = lenis
+    // Expose for dev debugging
+    if (process.env.NODE_ENV === "development") {
+      (window as unknown as { lenis?: Lenis }).lenis = lenis;
+    }
 
     return () => {
-      lenis.destroy()
-      if ((window as any).lenis) delete (window as any).lenis
-    }
-  }, [])
+      lenis.destroy();
+      if (process.env.NODE_ENV === "development") {
+        const w = window as unknown as { lenis?: Lenis };
+        if (w.lenis) delete w.lenis;
+      }
+    };
+  }, []);
 
-  return null
+  return null;
 }

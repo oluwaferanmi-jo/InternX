@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Users, Award, TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import { motion, Variants, useReducedMotion } from "framer-motion";
 
 export default function CTA() {
