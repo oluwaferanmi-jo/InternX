@@ -125,6 +125,7 @@
   100% { transform: translateX(-50%); } /* duplicate content -> seamless loop */
 }
 
+
 /* soft edge fade */
 .marquee-mask {
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -240,3 +241,4 @@
 .animate-scroll {
   animation: scroll 5s linear infinite;
 }
+
