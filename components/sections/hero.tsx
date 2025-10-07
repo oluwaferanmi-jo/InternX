@@ -111,7 +111,7 @@ export default function Hero() {
 
             <div className="relative overflow-hidden w-40 sm:w-52 md:w-64">
               <div className="flex items-center whitespace-nowrap text-foreground/70 animate-scroll">
-                <span className="px-2 lg:px-10">Check out the date</span>
+                <span className="px-2 lg:px-10">Applications Close Dec 31, 2025</span>
               </div>
             </div>
 
@@ -196,7 +196,7 @@ export default function Hero() {
               asChild
               className="rounded-full px-6 py-5 text-base shadow-[0_0_0_1px_rgba(6,182,212,.35)_inset,0_8px_30px_rgba(6,182,212,.2)] bg-white hover:bg-primary/90"
             >
-              <Link href="/signup">Enroll For Free</Link>
+              <Link href="/enroll">Enroll For Free</Link>
             </Button>
           </motion.div>
 

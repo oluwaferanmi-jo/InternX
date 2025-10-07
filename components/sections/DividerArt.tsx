@@ -5,7 +5,8 @@ import Image from "next/image";
 export default function DividerArt() {
   // Aspect ratio from your Figma frame: 1384 × 776
   return (
-    <div className="relative z-10 mt-5 lg:mt-10 lg:mb-5 mb-5">
+    // Hide on md and larger
+    <div className="block md:hidden relative z-10 mt-5 lg:mt-10 lg:mb-5 mb-5">
       {/* responsive width; always centered */}
       <div
         className="mx-auto w-[min(92vw,1100px)]"
@@ -13,7 +14,7 @@ export default function DividerArt() {
       >
         <Image
           src="/agent.svg" // <- your exported asset
-          alt="Astract"
+          alt="Abstract"
           fill
           priority
           className="
@@ -25,8 +26,10 @@ export default function DividerArt() {
       </div>
 
       {/* optional soft edge fade so it blends into the bg */}
-      <div className="pointer-events-none absolute inset-x-0 -bottom-6 h-0
-                      [mask-image:linear-gradient(to bottom,black,transparent)] bg-black/30" />
+      <div
+        className="pointer-events-none absolute inset-x-0 -bottom-6 h-0
+                    [mask-image:linear-gradient(to_bottom,black,transparent)] bg-black/30"
+      />
     </div>
   );
 }

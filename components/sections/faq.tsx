@@ -43,9 +43,9 @@ export default function FAQs() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
           {/* Left: Heading & intro */}
           <div className="lg:col-span-5">
-            <p className="text-sm font-medium text-pink-600">QUESTIONS & ANSWERS</p>
+            <p className="text-sm font-medium text-orange-600">QUESTIONS & ANSWERS</p>
             <h2 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
-              Frequently Asked <span className="whitespace-nowrap">Questions (FAQ)</span>
+              Frequently Asked <span className=" bg-gradient-to-r from-orange-400 via-amber-600 to-orange-600 bg-clip-text text-transparent whitespace-nowrap">Questions (FAQ)</span>
             </h2>
             <p className="mt-4 text-base text-slate-600">
               Got questions? We got answers. Browse the most common questions about InternX — how it
@@ -55,7 +55,7 @@ export default function FAQs() {
             <div className="mt-8">
               <Link
                 href="/faq"
-                className="inline-block rounded-sm bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-800"
+                className="inline-block rounded-sm bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-800"
               >
                 Contact us 
               </Link>
@@ -67,7 +67,7 @@ export default function FAQs() {
             <div className="space-y-4">
               {/* Top highlighted panel (expanded look) */}
           <div className="rounded-t-xl border border-slate-200 
-                   bg-gradient-to-r from-slate-800 via-slate-950 to-slate-900
+                 bg-gradient-to-r from-orange-500 via-amber-600 to-orange-600
                   text-white shadow">       
              <div className="px-6 py-5 lg:flex lg:items-start">
                   <div className="flex-1">
