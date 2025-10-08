@@ -119,7 +119,7 @@ export default function HowItWorks() {
         {/* CTA */}
         <div className="mt-12 flex justify-center">
           <Button asChild className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/80">
-            <Link href="/signup">
+            <Link href="/enroll">
               Join Cohort <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

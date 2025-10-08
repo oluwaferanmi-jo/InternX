@@ -123,7 +123,7 @@ export default function WhyChoose() {
         {/* CTA */}
         <div className="mt-12 flex justify-center">
           <Button asChild className="rounded-full px-6">
-            <Link href="/signup">Start your InternX journey</Link>
+            <Link href="/enroll">Start your InternX journey</Link>
           </Button>
         </div>
       </div>

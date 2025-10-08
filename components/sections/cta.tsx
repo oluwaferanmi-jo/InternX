@@ -95,7 +95,7 @@ export default function CTA() {
             {/* CTAs */}
             <div className="mt-8 flex flex-row flex-wrap gap-4 justify-center lg:justify-start">
               <Link
-                href="/signup"
+                href="/enroll"
                 className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-medium
                           shadow-[0_0_0_1px_rgba(6,182,212,.35)_inset,0_8px_30px_rgba(6,182,212,.2)]
                           bg-white text-black hover:bg-primary/90
