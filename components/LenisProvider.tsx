@@ -14,8 +14,8 @@ export default function LenisProvider(): null {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     const baseOptions: Partial<LenisOptions> = {
-      lerp: 0.05,
-      duration: 1.1,
+      lerp: 0.06,
+      duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       wheelMultiplier: 0.9,
       // Increase touch multiplier on mobile for better response
@@ -42,7 +42,8 @@ export default function LenisProvider(): null {
       // Add touch-action CSS for mobile
       if (isMobile || isTouch) {
         wrapperEl.style.touchAction = 'pan-y';
-        (wrapperEl.style as any).webkitOverflowScrolling = 'touch';
+        // Use setProperty for vendor-prefixed CSS
+        wrapperEl.style.setProperty('-webkit-overflow-scrolling', 'touch');
       }
     }
 
