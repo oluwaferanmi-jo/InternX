@@ -11,28 +11,14 @@ export default function EnrollmentPage() {
   return (
     <main className="min-h-screen bg-white text-black flex items-center justify-center py-6 px-4">
        <motion.div
-        id="enroll-lenis-wrapper"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
         className="w-full max-w-5xl bg-white rounded-2xl border border-gray-100 shadow-lg overflow-hidden"
-        style={{ 
-          maxHeight: "calc(100vh - 3rem)",
-          // Critical for mobile touch scrolling
-          WebkitOverflowScrolling: 'touch',
-          touchAction: 'pan-y'
-        }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-          {/* LEFT: Text + Form - NOW SCROLLABLE */}
-          <div 
-            className="overflow-y-auto p-4 md:p-8 lg:p-10"
-            style={{
-              // Ensure native scrolling on mobile
-              WebkitOverflowScrolling: 'touch',
-              overscrollBehavior: 'contain'
-            }}
-          >
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* LEFT: Text + Form */}
+          <div className="p-4 md:p-8 lg:p-10">
             <div className="flex flex-col gap-2">
               {/* Header */}
               <div className="mb-1">

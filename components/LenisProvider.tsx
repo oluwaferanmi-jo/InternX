@@ -7,47 +7,19 @@ import "lenis/dist/lenis.css";
 
 export default function LenisProvider(): null {
   useEffect(() => {
-    const wrapperEl = document.getElementById("enroll-lenis-wrapper");
-    
-    // Detect if we're on mobile
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
+    // Don't use a wrapper - let Lenis control the window scroll instead
     const baseOptions: Partial<LenisOptions> = {
       lerp: 0.06,
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       wheelMultiplier: 0.9,
-      // Increase touch multiplier on mobile for better response
-      touchMultiplier: isMobile ? 2 : 1,
+      touchMultiplier: 1.5,
       autoResize: true,
       orientation: "vertical",
       gestureOrientation: "vertical",
-      // Prevent Lenis from blocking native scroll on mobile
-      prevent: (node: Element) => {
-        // Don't prevent scroll on mobile devices
-        if (isMobile || isTouch) {
-          return false;
-        }
-        return node.hasAttribute('data-lenis-prevent');
-      },
     };
 
-    const finalOpts = { ...baseOptions } as Record<string, unknown>;
-
-    if (wrapperEl) {
-      finalOpts.wrapper = wrapperEl;
-      finalOpts.content = (wrapperEl.firstElementChild as Element) ?? wrapperEl;
-      
-      // Add touch-action CSS for mobile
-      if (isMobile || isTouch) {
-        wrapperEl.style.touchAction = 'pan-y';
-        // Use setProperty for vendor-prefixed CSS
-        wrapperEl.style.setProperty('-webkit-overflow-scrolling', 'touch');
-      }
-    }
-
-    const lenis = new Lenis(finalOpts as LenisOptions);
+    const lenis = new Lenis(baseOptions as LenisOptions);
 
     function raf(time: number) {
       (lenis as unknown as { raf?: (t: number) => void }).raf?.(time);
