@@ -1,111 +1,71 @@
 // src/components/LenisProvider.tsx
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Lenis, { type LenisOptions } from "lenis";
 import "lenis/dist/lenis.css";
-import { usePathname } from "next/navigation";
-
-/**
- * Helper that waits for an element matching `selector` to appear.
- * Tries up to `attempts` times, waiting `intervalMs` between tries.
- */
-async function waitForElement(
-  selector: string,
-  attempts = 20,
-  intervalMs = 100
-): Promise<Element | null> {
-  for (let i = 0; i < attempts; i++) {
-    const el = document.querySelector(selector);
-    if (el) return el;
-    // wait
-    // eslint-disable-next-line no-await-in-loop
-    await new Promise((res) => setTimeout(res, intervalMs));
-  }
-  return null;
-}
 
 export default function LenisProvider(): null {
-  const pathname = usePathname(); // triggers effect on navigation
-  const lenisRef = useRef<Lenis | null>(null);
-  const wrapperSelector = "#enroll-lenis-wrapper";
-
   useEffect(() => {
-    let destroyed = false;
+    const wrapperEl = document.getElementById("enroll-lenis-wrapper");
+    
+    // Detect if we're on mobile
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // Build base options as a Partial to be safe with different Lenis versions
     const baseOptions: Partial<LenisOptions> = {
-      lerp: 0.06,
-      duration: 1.2,
+      lerp: 0.05,
+      duration: 1.1,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       wheelMultiplier: 0.9,
-      touchMultiplier: 1,
+      // Increase touch multiplier on mobile for better response
+      touchMultiplier: isMobile ? 2 : 1,
       autoResize: true,
       orientation: "vertical",
       gestureOrientation: "vertical",
+      // Prevent Lenis from blocking native scroll on mobile
+      prevent: (node: Element) => {
+        // Don't prevent scroll on mobile devices
+        if (isMobile || isTouch) {
+          return false;
+        }
+        return node.hasAttribute('data-lenis-prevent');
+      },
     };
 
-    // init function that optionally accepts wrapper/content
-    function initLenis(opts: Partial<LenisOptions>) {
-      // destroy previous if exists
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-        lenisRef.current = null;
-      }
+    const finalOpts = { ...baseOptions } as Record<string, unknown>;
 
-      // cast is safe because runtime object will match Lenis expectations
-      const instance = new Lenis(opts as LenisOptions);
-
-      // RAF loop in case this build requires manual raf (most do expose raf)
-      function raf(t: number) {
-        (instance as unknown as { raf?: (time: number) => void }).raf?.(t);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-
-      lenisRef.current = instance;
-
-      if (process.env.NODE_ENV === "development") {
-        (window as unknown as { lenis?: Lenis }).lenis = instance;
+    if (wrapperEl) {
+      finalOpts.wrapper = wrapperEl;
+      finalOpts.content = (wrapperEl.firstElementChild as Element) ?? wrapperEl;
+      
+      // Add touch-action CSS for mobile
+      if (isMobile || isTouch) {
+        wrapperEl.style.touchAction = 'pan-y';
+        (wrapperEl.style as any).webkitOverflowScrolling = 'touch';
       }
     }
 
-    // Primary startup: try to detect wrapper first (useful for enrollment page)
-    (async () => {
-      // Wait a bit for the page to mount — if wrapper exists, we prefer wrapper-mode
-      const wrapper = await waitForElement(wrapperSelector, 30, 100); // ~3s max
+    const lenis = new Lenis(finalOpts as LenisOptions);
 
-      if (destroyed) return;
+    function raf(time: number) {
+      (lenis as unknown as { raf?: (t: number) => void }).raf?.(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-      if (wrapper) {
-        // If wrapper found, init Lenis with wrapper/content
-        const finalOpts: Record<string, unknown> = { ...baseOptions };
-        finalOpts.wrapper = wrapper;
-        finalOpts.content = (wrapper.firstElementChild as Element) ?? wrapper;
-        initLenis(finalOpts as Partial<LenisOptions>);
-      } else {
-        // No wrapper found: init Lenis for the whole document (global)
-        initLenis(baseOptions);
-      }
-    })();
-
-    // Re-check on route change (pathname changes trigger this effect)
-    // This ensures if user navigates to /enroll via Link, we will detect wrapper and re-init.
-    // We rely on the effect to re-run because `pathname` is a dependency below.
+    if (process.env.NODE_ENV === "development") {
+      (window as unknown as { lenis?: Lenis }).lenis = lenis;
+    }
 
     return () => {
-      destroyed = true;
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-        lenisRef.current = null;
-      }
+      lenis.destroy();
       if (process.env.NODE_ENV === "development") {
         const w = window as unknown as { lenis?: Lenis };
         if (w.lenis) delete w.lenis;
       }
     };
-    // Re-run on pathname change so provider can re-detect wrapper after client nav
-  }, [pathname]);
+  }, []);
 
   return null;
 }
