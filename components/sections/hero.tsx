@@ -44,10 +44,13 @@ export default function Hero() {
   return (
     <section
       ref={ref}
+      data-nav="transparent"
+      data-nav-bg="dark"
       className="
         relative overflow-hidden
         bg-gradient-to-b from-slate-900 via-slate-950 to-black
         text-foreground
+        
       "
     >
       {/* Animated background grid */}

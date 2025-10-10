@@ -9,7 +9,7 @@ export default function EnrollmentPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <main className="min-h-screen bg-white text-black flex items-center justify-center py-6 px-4">
+    <main className="min-h-screen  bg-white text-black flex items-center justify-center mt-4 md:mt-12 py-6 px-4">
        <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export default function EnrollmentPage() {
                       <input
                         name="name"
                         required
-                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-300"
                         placeholder="Jane Doe"
                       />
                     </div>
@@ -64,7 +64,7 @@ export default function EnrollmentPage() {
                         name="email"
                         type="email"
                         required
-                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-300"
                         placeholder="you@example.com"
                       />
                     </div>
@@ -74,7 +74,7 @@ export default function EnrollmentPage() {
                       <input
                         name="phone"
                         type="tel"
-                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-300"
                         placeholder="+234 ..."
                       />
                     </div>
@@ -83,7 +83,7 @@ export default function EnrollmentPage() {
                       <label className="block text-xs font-medium mb-1">Location (City)</label>
                       <input
                         name="city"
-                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-300"
                         placeholder="Lagos"
                       />
                     </div>
@@ -112,7 +112,7 @@ export default function EnrollmentPage() {
                     <textarea
                       name="motivation"
                       rows={3}
-                      className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+                      className="w-full border border-gray-200 rounded-md px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-orange-300"
                       placeholder="A short note about your goals..."
                     />
                   </div>
