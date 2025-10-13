@@ -292,7 +292,7 @@ export default function ViewTracks() {
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {new Array(4).fill(0).map((_, i) => (
               <div key={i} className="rounded-xl bg-white p-4 shadow-sm border border-slate-100">
-                <p className="text-sm text-slate-600">"Great content and mentorship — helped me land my first role."</p>
+                <p className="text-sm text-slate-600">&quot;Great content and mentorship — helped me land my first role.&quot;</p>
                 <div className="mt-3 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-sky-400" />
                   <div>
