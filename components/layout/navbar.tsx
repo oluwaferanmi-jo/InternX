@@ -162,15 +162,21 @@ export default function Navbar() {
       </div>
 
       {/* Mobile overlay + drawer */}
-      <div className={`fixed inset-0 z-50 transition-opacity ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} aria-hidden={!open}>
-        <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-        <aside
-          role="dialog"
-          aria-modal="true"
-          className={`absolute right-0 top-0 h-full w-[87%] max-w-sm p-6 transform transition-transform duration-300 ${
-            open ? "translate-x-0" : "translate-x-full"
-          } ${useTransparent ? "bg-transparent text-white" : "bg-slate-950 text-white"}`}
+       
+        <div
+          className={`fixed inset-0 z-50 transition-opacity ${
+            open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+          aria-hidden={!open}
         >
+          <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
+          <aside
+            role="dialog"
+            aria-modal="true"
+            className={`absolute right-0 top-0 h-full w-[87%] max-w-sm p-6 transform transition-transform duration-300 ${
+              open ? "translate-x-0" : "translate-x-full"
+            } bg-slate-950 text-white`}
+          >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary/20 text-primary">X</span>

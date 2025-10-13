@@ -36,7 +36,7 @@ const TRACKS: Array<RawTrack | null> = [
     subtitle: "Build responsive, accessible UIs",
     length: "6 weeks",
     slots: 50,
-    img: "/images/tracks/frontend.jpg",
+    img: "/Avatar.svg",
     color: "bg-gradient-to-br from-sky-600 to-indigo-600",
   },
   {
@@ -45,7 +45,7 @@ const TRACKS: Array<RawTrack | null> = [
     subtitle: "APIs, databases and scalable systems",
     length: "6 weeks",
     slots: 50,
-    img: "/images/tracks/backend.jpg",
+    img: "/Avatar.svg",
     color: "bg-gradient-to-br from-emerald-600 to-teal-600",
   },
   {
@@ -54,7 +54,7 @@ const TRACKS: Array<RawTrack | null> = [
     subtitle: "Transform data into insights",
     length: "6 weeks",
     slots: 50,
-    img: "/images/tracks/data.jpg",
+    img: "/Avatar.svg",
     color: "bg-gradient-to-br from-amber-500 to-orange-500",
   },
   {
@@ -63,7 +63,7 @@ const TRACKS: Array<RawTrack | null> = [
     subtitle: "iOS and Android apps",
     length: "6 weeks",
     slots: 40,
-    img: "/images/tracks/mobile.jpg",
+    img: "/Avatar.svg",
     color: "bg-gradient-to-br from-purple-600 to-pink-600",
   },
   {
@@ -72,7 +72,7 @@ const TRACKS: Array<RawTrack | null> = [
     subtitle: "Deploy and scale applications",
     length: "6 weeks",
     slots: 35,
-    img: "/images/tracks/cloud.jpg",
+    img: "/Avatar.svg",
     color: "bg-gradient-to-br from-blue-600 to-cyan-600",
   },
   {
@@ -81,7 +81,7 @@ const TRACKS: Array<RawTrack | null> = [
     subtitle: "Build intelligent systems",
     length: "8 weeks",
     slots: 30,
-    img: "/images/tracks/ai.jpg",
+    img: "/Avatar.svg",
     color: "bg-gradient-to-br from-violet-600 to-fuchsia-600",
   },
 ];
@@ -115,7 +115,7 @@ export default function ViewTracks() {
   const [selectedCategory, setSelectedCategory] = React.useState("All categories");
 
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <main className="min-h-screen mt-6 bg-white text-slate-900">
       {/* Hero */}
       <section className="relative overflow-hidden pb-12 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -267,7 +267,7 @@ export default function ViewTracks() {
       </section>
 
       {/* Categories / Featured topics */}
-      <section id="categories" className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <section id="categories" className="hidden max-w-7xl mx-auto px-6 lg:px-8 py-12">
         <h3 className="text-xl font-semibold">Top categories</h3>
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
           {[
