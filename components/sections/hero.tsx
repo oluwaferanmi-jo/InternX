@@ -210,7 +210,7 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              href="#demo"
+              href=".../tracks"
               className="rounded-full border border-white/20 px-6 py-2 text-base text-foreground/80 hover:bg-white/5 transition-colors"
             >
               View Tracks
