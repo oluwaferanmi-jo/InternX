@@ -9,7 +9,7 @@ export default function EnrollmentPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <main className="min-h-screen bg-white text-black flex items-center justify-center mt-8 md:mt-12 py-6 px-4">
+    <main className="min-h-screen bg-white text-black flex items-center justify-center mt-10 md:mt-12 py-6 px-4">
        <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
