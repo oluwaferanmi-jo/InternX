@@ -220,137 +220,171 @@ export default function ViewTracks() {
         </div>
       </section>
 
-      {/* Tracks grid */}
+      {/* Tracks grid — POLISHED */}
       <section id="tracks" className="max-w-7xl mx-auto px-6 lg:px-8 -mt-6 pb-12">
-        <div className="bg-white rounded-3xl p-6 shadow-md ring-1 ring-slate-100">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <h2 className="text-2xl font-semibold">Available tracks</h2>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <select
-                className="rounded-md border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                <option>All categories</option>
-                <option>Software Development</option>
-                <option>Design & Creativity</option>
-                <option>Data & Analytics</option>
-              </select>
-              <input
-                placeholder="Search tracks"
-                className="rounded-md border border-slate-200 px-3 py-2 text-sm w-full sm:w-56 focus:outline-none focus:ring-2 focus:ring-slate-900"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+        {/* Card shell with soft background texture */}
+        <div className="relative rounded-3xl border border-slate-200/80 bg-white shadow-sm overflow-hidden">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(40rem_40rem_at_120%_-10%,#c7d2fe_0%,transparent_40%),radial-gradient(30rem_30rem_at_-10%_120%,#fce7f3_0%,transparent_35%)] opacity-40" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+
+          {/* Header + actions */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6">
+            <div className="flex items-center gap-3">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">Available tracks</h2>
+              <span className="hidden sm:inline-block text-xs text-slate-600/90 bg-slate-100 rounded-full px-2.5 py-1">
+                {filtered?.length ?? 0} results
+              </span>
+            </div>
+
+            {/* Controls */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+              {/* Category select */}
+              <div className="relative w-full sm:w-56">
+                <select
+                  className="w-full appearance-none rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-[0_1px_0_0_rgb(0_0_0/0.02)] outline-none transition focus:border-slate-300 focus:ring-2 focus:ring-slate-900/10"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  aria-label="Filter by category"
+                >
+                  <option>All categories</option>
+                  <option>Software Development</option>
+                  <option>Design & Creativity</option>
+                  <option>Data & Analytics</option>
+                </select>
+                <svg
+                  aria-hidden
+                  className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" />
+                </svg>
+              </div>
+
+              {/* Search */}
+              <div className="relative w-full sm:w-64">
+                <input
+                  placeholder="Search tracks"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-9 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 shadow-[0_1px_0_0_rgb(0_0_0/0.02)] outline-none transition focus:border-slate-300 focus:ring-2 focus:ring-slate-900/10"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search tracks"
+                />
+                <svg aria-hidden className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12.9 14.32a7 7 0 111.414-1.414l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387zM14 9a5 5 0 11-10 0 5 5 0 0110 0z" clipRule="evenodd" />
+                </svg>
+              </div>
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((t: RawTrack | null, idx: number) => {
-              const track = safeTrack(t, `fallback-${idx}`);
-
-              return (
-                <article
-                  key={track.id}
-                  className="group rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg hover:scale-[1.02] transition-all duration-200 bg-white"
-                  aria-labelledby={`track-${track.id}-title`}
-                >
-                  {/* Top visual area with gradient */}
-                  <div className="relative p-4">
-                    <div
-                      className={`rounded-xl overflow-hidden bg-gradient-to-br ${track.color} p-4 relative`}
-                      style={{ minHeight: 110 }}
-                    >
-                      {/* Decorative faint circle */}
-                      <div className="absolute -top-8 -right-8 w-36 h-36 bg-white/8 rounded-full blur-[2px] pointer-events-none" />
-
-                      {/* Main card surface */}
-                      <div className="relative rounded-lg h-36">
-                        {/* Subtle inner glow */}
-                        <div className="absolute inset-3 rounded-lg bg-white/10" />
-
-                        {/* Ants graphic bottom-right */}
-                        <div className="absolute right-2 bottom-2 w-56 h-32 opacity-70 transform rotate-6">
-                          <AntsGraphic className="w-full h-full" />
-                        </div>
-
-                        {/* Title inside colored area */}
-                        <div className="absolute left-4 bottom-4 text-white z-10">
-                          <h3 id={`track-${track.id}-title`} className="text-lg font-bold">
-                            {track.title}
-                          </h3>
-                          <p className="text-xs opacity-95 mt-1 max-w-xs">{track.subtitle}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom content */}
-                  <div className="p-4">
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src={track.img}
-                        alt={track.title}
-                        width={84}
-                        height={64}
-                        className="rounded-md object-cover border border-slate-100"
-                      />
-                      <div className="flex-1">
-                        <p className="text-sm font-bold text-slate-900">{track.title}</p>
-                        <p className="text-xs text-slate-800 mt-1">{track.subtitle}</p>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700">
-                          <Clock size={12} /> {track.length}
-                        </span>
-                        <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700">
-                          <Users size={12} /> {track.slots} slots
-                        </span>
-                      </div>
-
-                      <Link
-                        href={`/tracks/${track.id}`}
-                        className="rounded-lg border border-slate-300 px-4 py-2 text-xs hover:bg-slate-50 transition-colors"
-                        aria-label={`Learn more about ${track.title}`}
+          {/* Grid */}
+          <div className="px-6 pb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+              {filtered.map((t: RawTrack | null, idx: number) => {
+                const track = safeTrack(t, `fallback-${idx}`);
+                return (
+                  <article
+                    key={track.id}
+                    className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 focus-within:shadow-lg"
+                    aria-labelledby={`track-${track.id}-title`}
+                  >
+                    {/* Top visual area */}
+                    <div className="relative p-4">
+                      <div
+                        className={`relative min-h-[120px] rounded-xl overflow-hidden bg-gradient-to-br ${track.color}`}
                       >
-                        Learn More
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+                        {/* soft texture */}
+                        <div className="absolute inset-0 bg-[radial-gradient(120px_60px_at_90%_20%,rgba(255,255,255,0.18),transparent_60%),radial-gradient(140px_80px_at_10%_80%,rgba(255,255,255,0.14),transparent_60%)]" />
 
-          <div className="mt-6 text-center">
-            <Link
-              href="/tracks"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-colors"
-            >
-              View all tracks
-            </Link>
+                        {/* inner surface */}
+                        <div className="relative h-36">
+                          <div className="absolute inset-3 rounded-lg bg-white/10 ring-1 ring-inset ring-white/10" />
+
+                          {/* Decorative graphic */}
+                          <div className="absolute right-2 bottom-2 w-56 h-32 opacity-70 rotate-6">
+                            <AntsGraphic className="w-full h-full" />
+                          </div>
+
+                          {/* Title */}
+                          <div className="absolute left-4 bottom-4 text-white drop-shadow-sm">
+                            <h3 id={`track-${track.id}-title`} className="text-base sm:text-lg font-bold leading-tight">
+                              {track.title}
+                            </h3>
+                            <p className="mt-1 max-w-xs text-[11px] sm:text-xs opacity-95">
+                              {track.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom content */}
+                    <div className="p-4">
+                      <div className="flex items-center gap-3">
+                        <Image
+                          src={track.img}
+                          alt={track.title}
+                          width={96}
+                          height={72}
+                          className="hidden h-16 w-24 rounded-lg object-cover border border-slate-200"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-semibold text-slate-900">{track.title}</p>
+                          <p className="mt-1 line-clamp-2 text-xs text-slate-700">{track.subtitle}</p>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-medium text-slate-700">
+                            <Clock className="h-3.5 w-3.5" /> {track.length}
+                          </span>
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1 text-[11px] font-medium text-slate-700">
+                            <Users className="h-3.5 w-3.5" /> {track.slots} slots
+                          </span>
+                        </div>
+
+                        <Link
+                          href={`/tracks/${track.id}`}
+                          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-medium text-slate-900 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20"
+                          aria-label={`Learn more about ${track.title}`}
+                        >
+                          Learn more
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* focus ring for keyboard nav */}
+                    <span className="absolute inset-0 rounded-2xl ring-0 ring-slate-900/0 focus-within:ring-2 focus-within:ring-slate-900/15" />
+                  </article>
+                );
+              })}
+            </div>
+
+            {/* View all */}
+            <div className="mt-8 text-center">
+              <Link
+                href="/tracks"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-medium text-slate-900 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20"
+              >
+                View all tracks
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Categories / Featured topics */}
       <section id="categories" className="hidden max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <h3 className="text-xl font-semibold">Top categories</h3>
-        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-          {[
-            "Software Development",
-            "Design and Creativity",
-            "Data & Analytics",
-            "Cloud & DevOps",
-            "Product",
-            "Marketing",
-          ].map((c) => (
-            <div key={c} className="rounded-xl border border-slate-200 p-3 text-center text-sm hover:bg-slate-50 hover:border-slate-300 transition-colors cursor-pointer">
+        <h3 className="text-lg sm:text-xl font-semibold text-slate-900">Top categories</h3>
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
+          {["Software Development","Design and Creativity","Data & Analytics","Cloud & DevOps","Product","Marketing"].map((c) => (
+            <button
+              key={c}
+              className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs sm:text-sm text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20"
+            >
               {c}
-            </div>
+            </button>
           ))}
         </div>
       </section>
@@ -366,17 +400,17 @@ export default function ViewTracks() {
               <p className="mt-1 text-sm opacity-90">Pick a track and join live classes — limited slots per cohort.</p>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <Link
                 href="/enroll"
-                className="rounded-lg bg-white text-slate-900 px-5 py-3 font-medium hover:bg-slate-50 transition-colors"
+                className="inline-flex items-center justify-center rounded-lg bg-white text-slate-900 px-5 py-3 font-medium hover:bg-slate-50 transition-colors"
               >
                 Enroll now
               </Link>
 
               <Link
                 href="#"
-                className="rounded-lg border border-white/30 px-4 py-3 text-sm hover:bg-white/10 transition-colors"
+                className="inline-flex items-center justify-center rounded-lg border border-white/30 px-4 py-3 text-sm hover:bg-white/10 transition-colors"
               >
                 Learn more
               </Link>

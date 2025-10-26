@@ -11,7 +11,7 @@ const nav = [
   { href: "/about", label: "About" },
   { href: "/tracks", label: "Tracks" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/faq", label: "FAQ" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export default function Navbar() {

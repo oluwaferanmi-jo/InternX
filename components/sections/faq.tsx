@@ -38,7 +38,7 @@ export default function FAQs() {
   }
 
   return (
-    <section className="bg-gray-50 rounded-t-3xl">
+    <section id="faq" className="bg-gray-50 rounded-t-3xl">
       <div className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
           {/* Left: Heading & intro */}
